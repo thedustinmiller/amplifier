@@ -1,0 +1,115 @@
+name: waterfall
+description: "Sequential phase-based development with formal gates and comprehensive documentation"
+version: "1.0.0"
+
+# Compositional references to shared commands and agents
+imports:
+  commands:
+    - "@commands/ultrathink-task"
+    - "@commands/prime"
+
+  agents:
+    # Design and architecture
+    - "@agents/api-contract-designer"
+    - "@agents/database-architect"
+    - "@agents/design-system-architect"
+
+    # Quality and security
+    - "@agents/test-coverage"
+    - "@agents/security-guardian"
+    - "@agents/bug-hunter"
+
+    # Documentation
+    - "@agents/content-researcher"
+
+# Profile-specific commands for waterfall phases
+local:
+  commands:
+    - "waterfall:1-requirements"
+    - "waterfall:2-design"
+    - "waterfall:3-implement"
+    - "waterfall:4-test"
+    - "waterfall:5-deploy"
+    - "gate-review"
+    - "change-request"
+    - "traceability-matrix"
+
+  agents:
+    - "requirements-analyst"
+    - "systems-architect"
+    - "qa-planner"
+    - "change-manager"
+    - "documentation-specialist"
+    - "gate-reviewer"
+
+# Philosophy documents for waterfall methodology
+philosophy:
+  - "./WATERFALL_METHODOLOGY.md"
+  - "./PHASE_GATE_CHECKLIST.md"
+  - "./CHANGE_MANAGEMENT_PROCESS.md"
+  - "./PROFILE.md"
+
+# Hooks for phase gates and tracking
+hooks:
+  SessionStart: "hook_session_start.py"
+  PostToolUse: "phase_gate_check.sh"
+
+# Profile-specific settings
+settings:
+  enableTodoList: true
+  trackDecisions: true
+  decisionsPath: "../../ai_working/waterfall_decisions/"
+
+  # Waterfall-specific settings
+  phaseGatesRequired: true
+  requireDocumentation: "comprehensive"
+  changeControlProcess: "formal"
+  traceabilityRequired: true
+
+  # Phase completion criteria
+  phases:
+    requirements:
+      deliverables: ["Requirements Specification", "Use Cases", "Acceptance Criteria"]
+      approval: "Stakeholder Sign-off"
+
+    design:
+      deliverables: ["Architecture Document", "Database Schema", "API Specs"]
+      approval: "Technical Review Board"
+
+    implementation:
+      deliverables: ["Source Code", "Unit Tests", "Code Review Records"]
+      approval: "Code Complete"
+
+    testing:
+      deliverables: ["Test Plans", "Test Results", "Defect Reports"]
+      approval: "QA Sign-off"
+
+    deployment:
+      deliverables: ["Deployment Plan", "User Documentation", "Training Materials"]
+      approval: "Production Release"
+
+  # Testing strategy
+  testingStrategy: "comprehensive"  # Test everything, all scenarios
+
+  # Documentation requirements
+  documentation:
+    requirements: "mandatory"
+    design: "mandatory"
+    implementation: "detailed"
+    testing: "comprehensive"
+    deployment: "complete"
+
+# MCP servers
+mcpServers:
+  - "deepwiki"
+  - "context7"
+
+# Tags for discovery
+tags:
+  - "waterfall"
+  - "sequential"
+  - "phase-gate"
+  - "predictive"
+  - "documentation-heavy"
+  - "formal"
+  - "regulated"

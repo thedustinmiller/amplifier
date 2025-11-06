@@ -1,0 +1,114 @@
+name: mathematical-elegance
+description: "Formal methods, type-driven design, and provable correctness"
+version: "1.0.0"
+
+# Compositional references to shared commands and agents
+imports:
+  commands:
+    - "@commands/ultrathink-task"
+    - "@commands/prime"
+
+  agents:
+    # Reinterpret through formal lens
+    - "@agents/zen-architect"
+    - "@agents/security-guardian"
+    - "@agents/performance-optimizer"
+
+    # Design and analysis
+    - "@agents/api-contract-designer"
+    - "@agents/pattern-emergence"
+    - "@agents/concept-extractor"
+    - "@agents/insight-synthesizer"
+
+# Profile-specific commands for formal methods
+local:
+  commands:
+    - "formal:specify"
+    - "formal:prove"
+    - "formal:refine"
+    - "formal:verify"
+    - "type:design"
+    - "property:test"
+    - "abstraction:discover"
+    - "reason:calculate"
+
+  agents:
+    - "type-theorist"
+    - "proof-engineer"
+    - "abstraction-miner"
+    - "specification-author"
+    - "property-designer"
+    - "refinement-specialist"
+    - "category-theorist"
+
+# Philosophy documents for formal methods
+philosophy:
+  - "./FORMAL_METHODS_PHILOSOPHY.md"
+  - "./TYPE_DRIVEN_DESIGN.md"
+  - "./ALGEBRAIC_PATTERNS.md"
+  - "./PROOF_TECHNIQUES.md"
+  - "./PROFILE.md"
+
+# Minimal hooks - let types and proofs do the work
+hooks:
+  SessionStart: "hook_session_start.py"
+
+# Profile-specific settings
+settings:
+  enableTodoList: true
+  trackDecisions: true
+  decisionsPath: "../../ai_working/formal_decisions/"
+
+  # Formal methods preferences
+  typeSystemStrength: "maximum"  # Use strongest type system available
+  proofRequirement: "critical-paths"  # Prove critical properties
+  testingStrategy: "property-based"  # Properties over examples
+  abstractionPreference: "mathematical"  # Seek algebraic structure
+
+  # Type-driven development
+  typesFirst: true
+  makeIllegalStatesUnrepresentable: true
+  parseNotValidate: true
+  totalityPreferred: true
+
+  # Verification settings
+  verification:
+    tool: "property-tests"  # Options: property-tests, proof-assistant, model-checker
+    coverage: "critical-properties"  # Options: none, critical-properties, comprehensive
+    proofsAccompanyCode: true
+
+  # Abstraction design
+  abstraction:
+    seekLaws: true  # Abstractions should satisfy algebraic laws
+    categoryTheoryInformed: true
+    compositionFirst: true
+
+  # Code style
+  codeStyle:
+    referentialTransparency: "enforce"
+    explicitEffects: true
+    totalFunctions: "prefer"
+    recursionSchemes: "encourage"
+
+# Recommended tools and languages
+recommendations:
+  languages: ["Haskell", "OCaml", "Scala", "F#", "Rust", "Lean", "Agda", "Coq"]
+  testing: ["QuickCheck", "Hypothesis", "fast-check", "ScalaCheck"]
+  verification: ["TLA+", "Alloy", "Coq", "Lean", "Liquid Haskell", "F*"]
+  typeTheory: ["Dependent types", "Refinement types", "Linear types", "Effect systems"]
+
+# MCP servers
+mcpServers:
+  - "context7"  # For PL papers and documentation
+  - "deepwiki"
+
+# Tags for discovery
+tags:
+  - "formal-methods"
+  - "type-driven"
+  - "mathematical"
+  - "correctness"
+  - "proofs"
+  - "functional-programming"
+  - "category-theory"
+  - "research-oriented"

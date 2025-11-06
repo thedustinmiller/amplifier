@@ -1,0 +1,101 @@
+name: default
+description: "Ruthless minimalism with emergent design and bricks & studs architecture"
+version: "1.0.0"
+
+# Compositional references to shared commands and agents
+# These are imported from .claude/ shared libraries
+imports:
+  commands:
+    # Core orchestration
+    - "@commands/ultrathink-task"
+    - "@commands/prime"
+    - "@commands/transcripts"
+    - "@commands/designer"
+
+    # Code quality and review
+    - "@commands/code-review"
+    - "@commands/test-review"
+
+  agents:
+    # Development agents
+    - "@agents/zen-architect"
+    - "@agents/modular-builder"
+    - "@agents/bug-hunter"
+    - "@agents/test-coverage"
+    - "@agents/performance-optimizer"
+    - "@agents/security-guardian"
+    - "@agents/integration-specialist"
+    - "@agents/database-architect"
+    - "@agents/api-contract-designer"
+
+    # Knowledge synthesis agents
+    - "@agents/concept-extractor"
+    - "@agents/insight-synthesizer"
+    - "@agents/knowledge-archaeologist"
+    - "@agents/pattern-emergence"
+    - "@agents/tension-keeper"
+    - "@agents/ambiguity-guardian"
+
+    # Infrastructure
+    - "@agents/amplifier-cli-architect"
+    - "@agents/post-task-cleanup"
+
+# Profile-specific commands and agents
+# These live in this profile's commands/ and agents/ directories
+local:
+  commands:
+    - "ddd:1-plan"
+    - "ddd:2-contract"
+    - "ddd:3-implement"
+    - "ddd:4-verify"
+    - "ddd:5-finish"
+
+  agents:
+    # Profile-specific agents can be added here
+    # e.g., - "bricks-builder"
+
+# Philosophy documents to load on session start (in order)
+philosophy:
+  - "../../ai_context/IMPLEMENTATION_PHILOSOPHY.md"
+  - "../../ai_context/MODULAR_DESIGN_PHILOSOPHY.md"
+  - "./PROFILE.md"
+
+# Profile-specific hooks
+hooks:
+  SessionStart: "hook_session_start.py"
+  PreCompact: "hook_precompact.py"
+  PostToolUse: "on_code_change_hook.sh"
+  PreToolUse: "on_pretool_use_hook.py"
+  Notification: "on_notification_hook.py"
+
+# Profile-specific settings
+settings:
+  # Enable todo list for task tracking
+  enableTodoList: true
+
+  # Default testing strategy
+  testingStrategy: "60/30/10"  # 60% unit, 30% integration, 10% e2e
+
+  # Code quality preferences
+  codeStyle:
+    maxComplexity: 10
+    maxLineLength: 120
+    preferExplicitOverClever: true
+
+  # Decision tracking
+  trackDecisions: true
+  decisionsPath: "../../ai_working/decisions/"
+
+# MCP servers useful for this profile
+mcpServers:
+  - "browser-use"
+  - "deepwiki"
+  - "context7"
+
+# Tags for discovery and filtering
+tags:
+  - "minimalism"
+  - "emergent-design"
+  - "modular"
+  - "document-driven"
+  - "ai-assisted"

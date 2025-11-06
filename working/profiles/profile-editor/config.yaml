@@ -1,0 +1,129 @@
+name: profile-editor
+description: "Meta-cognitive profile for analyzing and refining development processes"
+version: "1.0.0"
+
+# Compositional references to shared commands and agents
+imports:
+  commands:
+    # Core orchestration
+    - "@commands/ultrathink-task"
+    - "@commands/prime"
+
+  agents:
+    # Knowledge and analysis agents - perfect for understanding process
+    - "@agents/concept-extractor"
+    - "@agents/insight-synthesizer"
+    - "@agents/knowledge-archaeologist"
+    - "@agents/pattern-emergence"
+    - "@agents/tension-keeper"
+    - "@agents/ambiguity-guardian"
+    - "@agents/content-researcher"
+
+    # Design thinking agents
+    - "@agents/design-system-architect"
+    - "@agents/art-director"
+
+    # Meta-infrastructure
+    - "@agents/subagent-architect"
+    - "@agents/post-task-cleanup"
+
+# Profile-specific commands for process design
+local:
+  commands:
+    - "profile-analyze"
+    - "profile-compare"
+    - "profile-create"
+    - "profile-refine"
+    - "philosophy-extract"
+    - "process-pain-points"
+    - "profile-list"
+    - "profile-switch"
+
+  agents:
+    - "process-philosopher"
+    - "cognitive-mapper"
+    - "tension-identifier"
+    - "composition-architect"
+    - "empirical-analyzer"
+    - "pedagogy-designer"
+
+# Philosophy documents for profile design
+philosophy:
+  - "./PROFILE_DESIGN_PRINCIPLES.md"
+  - "./PROCESS_PATTERNS_LIBRARY.md"
+  - "./COGNITIVE_AFFORDANCES.md"
+  - "./PROFILE.md"
+
+# Minimal hooks - we want to observe process, not enforce it
+hooks:
+  SessionStart: "hook_session_start.py"
+
+# Profile-specific settings
+settings:
+  # Enable detailed tracking of meta-cognitive work
+  enableTodoList: true
+  trackDecisions: true
+  decisionsPath: "../../ai_working/profile_evolution/"
+
+  # Profile editor preferences
+  analysisDepth: "deep"  # Go deep when analyzing processes
+  comparativeMode: true  # Always think in terms of tradeoffs
+
+  # Encourage questioning
+  encourageSkepticism: true
+  surfaceTensions: true
+  makeImplicitExplicit: true
+
+# MCP servers useful for research and analysis
+mcpServers:
+  - "deepwiki"
+  - "context7"
+  - "browser-use"
+
+# Profile archetypes this profile understands
+archetypes:
+  - name: "minimalist"
+    description: "Start small, let complexity emerge"
+    examples: ["default"]
+
+  - name: "formal"
+    description: "Proofs, specifications, verification"
+    examples: ["mathematical-elegance"]
+
+  - name: "sequential"
+    description: "Phases, gates, upfront design"
+    examples: ["waterfall"]
+
+  - name: "iterative"
+    description: "Sprints, stories, continuous delivery"
+    examples: ["agile", "lean"]
+
+  - name: "exploratory"
+    description: "Hypothesis, experiment, learn"
+    examples: ["research", "discovery"]
+
+  - name: "safety-critical"
+    description: "Compliance, validation, traceability"
+    examples: ["regulated", "medical", "aerospace"]
+
+# Questions to guide profile design
+designQuestions:
+  - "What is this process optimizing for?"
+  - "What assumptions does it make?"
+  - "Where do theory and practice diverge?"
+  - "What are the cognitive affordances?"
+  - "What's missing or over-specified?"
+  - "Who is this process designed for?"
+  - "What tradeoffs does it make?"
+  - "How does it handle uncertainty?"
+  - "What does it make easy/hard?"
+  - "When should you NOT use this profile?"
+
+# Tags for discovery
+tags:
+  - "meta-cognitive"
+  - "process-design"
+  - "methodology"
+  - "reflection"
+  - "analysis"
+  - "profile-creation"
