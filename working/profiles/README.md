@@ -338,6 +338,72 @@ See `profile-editor/PROFILE_DESIGN_PRINCIPLES.md` for deep dive.
 
 ## Advanced Usage
 
+### Invoking Subagents with Specific Profiles
+
+One of the key benefits of the profiles system is the ability to invoke subagents with specific cognitive approaches, regardless of your currently active profile.
+
+#### Pattern 1: Explicit Profile Context in Task Description
+
+When using the Task tool or invoking subagents, you can specify the desired cognitive approach in the task description:
+
+```
+Use the zen-architect agent with minimalist philosophy to design a caching layer
+```
+
+```
+Deploy the requirements-analyst agent using waterfall methodology to gather requirements
+```
+
+```
+Invoke the proof-architect agent with formal methods approach to verify this algorithm
+```
+
+#### Pattern 2: Profile-Specific Agents
+
+Create agents specifically designed for a profile by placing them in `profiles/<name>/agents/`:
+
+```
+profiles/
+├── waterfall/
+│   └── agents/
+│       ├── requirements-analyst.md    # Waterfall-specific
+│       └── gate-reviewer.md          # Waterfall-specific
+├── mathematical-elegance/
+│   └── agents/
+│       ├── proof-architect.md        # Formal methods-specific
+│       └── type-designer.md          # Type-driven design
+└── default/
+    └── agents/
+        └── bricks-builder.md         # Minimalist-specific
+```
+
+These agents automatically inherit their profile's philosophy when invoked.
+
+#### Pattern 3: Temporary Profile Switching for Specific Tasks
+
+For complex workflows, you can switch profiles temporarily:
+
+```bash
+# Currently in default profile
+/profile-switch waterfall
+# Work with waterfall methodology
+# ... use agents, commands, etc.
+/profile-switch default  # Return to default
+```
+
+#### Pattern 4: Parallel Agents with Different Profiles
+
+Use multiple agents in parallel, each with different profiles, to explore approaches:
+
+```
+Launch three parallel agents:
+1. Use zen-architect with minimalist approach
+2. Use requirements-analyst with waterfall methodology
+3. Use proof-architect with formal methods
+
+Compare their recommendations.
+```
+
 ### Comparing Profiles
 ```bash
 /profile-compare default waterfall

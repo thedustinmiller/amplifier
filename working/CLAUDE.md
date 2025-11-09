@@ -6,16 +6,34 @@ This project uses a shared context file (`AGENTS.md`) for common project guideli
 
 This file is reserved for Claude Code-specific instructions.
 
-# import the following files (using the `@` syntax):
+# Loading Order and Context
 
-- @AGENTS.md
-- @DISCOVERIES.md
-- @ai_context/IMPLEMENTATION_PHILOSOPHY.md
-- @ai_context/MODULAR_DESIGN_PHILOSOPHY.md
-- @ai_context/DESIGN-PHILOSOPHY.md
-- @ai_context/DESIGN-PRINCIPLES.md
+The Amplifier system uses a profile-based approach to load context. See `PROFILES_SYSTEM.md` for details.
+
+## Primary Context Files
+
+Import these files for general development work (using the `@` syntax):
+
+- @AGENTS.md - Core development philosophy and agent guidance (SINGLE SOURCE OF TRUTH)
+- @DISCOVERIES.md - Accumulated learning and problem/solution knowledge base
+
+## Additional Context (Load as Needed)
+
+For design work:
 - @ai_context/design/DESIGN-FRAMEWORK.md
 - @ai_context/design/DESIGN-VISION.md
+
+For Claude Code specific features:
+- @ai_context/AMPLIFIER_CLAUDE_CODE_LEVERAGE.md
+
+## Profile System
+
+The active profile (`.claude/active-profile` symlink) determines which philosophy documents are loaded. See:
+- `profiles/README.md` - Comprehensive profiles guide
+- `/profile-list` - See available profiles
+- `/profile-switch <name>` - Switch to a different profile
+
+**Note**: The old `IMPLEMENTATION_PHILOSOPHY.md` and `MODULAR_DESIGN_PHILOSOPHY.md` files are now symlinked to `AGENTS.md` for backwards compatibility. All updates should be made to `AGENTS.md`.
 
 # Claude's Working Philosophy and Memory System
 

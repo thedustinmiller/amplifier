@@ -2,6 +2,19 @@
 
 This file provides guidance to AI assistants when working with code in this repository.
 
+**Note**: This file is the SINGLE SOURCE OF TRUTH for core development philosophy. Files like `ai_context/IMPLEMENTATION_PHILOSOPHY.md` and `ai_context/MODULAR_DESIGN_PHILOSOPHY.md` are symlinked to this file.
+
+## Loading Context and Profiles
+
+Amplifier uses a **profile-based system** to load context and shape AI behavior:
+
+1. **Primary Context**: This file (AGENTS.md) contains core development philosophy
+2. **Active Profile**: The `.claude/active-profile` symlink determines which profile is active
+3. **Profile Philosophy**: Each profile in `profiles/` loads additional philosophy documents
+4. **Composition**: Profiles compose shared agents/commands with profile-specific ones
+
+See `PROFILES_SYSTEM.md` and `profiles/README.md` for details on the profiles system.
+
 ---
 
 ## 💎 CRITICAL: Respect User Time - Test Before Presenting
