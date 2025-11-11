@@ -1,0 +1,155 @@
+{
+  "discovery": {
+    "total_count": 2,
+    "by_type": {
+      "principle": [
+        "ruthless-minimalism",
+        "coevolution"
+      ]
+    },
+    "elements": [
+      "ruthless-minimalism",
+      "coevolution"
+    ]
+  },
+  "principles": [
+    {
+      "name": "ruthless-minimalism",
+      "version": "1.0.0",
+      "description": "Ship the simplest thing that could possibly work, then adapt based on real needs",
+      "tags": [
+        "minimalism",
+        "speed",
+        "pragmatism"
+      ],
+      "author": "core"
+    },
+    {
+      "name": "coevolution",
+      "version": "1.0.0",
+      "description": "Specifications and code are conversation partners that inform each other",
+      "tags": [
+        "coevolution",
+        "specs",
+        "dialogue",
+        "pragmatism"
+      ],
+      "author": "core"
+    }
+  ],
+  "loading_tests": {
+    "ruthless-minimalism": {
+      "name": "ruthless-minimalism",
+      "type": "principle",
+      "tests": {
+        "metadata": {
+          "valid": true,
+          "name": "ruthless-minimalism",
+          "type": "principle",
+          "version": "1.0.0",
+          "description": "Ship the simplest thing that could possibly work, then adapt based on real needs",
+          "tags": [
+            "minimalism",
+            "speed",
+            "pragmatism"
+          ],
+          "license": "MIT"
+        },
+        "content": {
+          "loaded": true,
+          "length": 3905,
+          "preview": "# Principle: Ruthless Minimalism\n\n## Core Tenet\nShip the simplest thing that could possibly work, then adapt based on real needs.\n\n## Motivation\nComplexity is expensive. Time spent building features n"
+        },
+        "dependencies": {
+          "principles": [],
+          "constitutions": [],
+          "tools": [],
+          "agents": [],
+          "templates": [],
+          "suggests": [
+            "emergent-design",
+            "coevolution"
+          ]
+        },
+        "conflicts": {
+          "principles": [
+            "waterfall",
+            "formal-verification"
+          ],
+          "tools": [],
+          "agents": [],
+          "reason": "Ruthless minimalism conflicts with upfront planning and formal methods"
+        },
+        "yaml_structure": {
+          "exists": true,
+          "path": "/home/user/amplifier/forge/elements/principle/ruthless-minimalism/element.yaml"
+        }
+      },
+      "status": "success"
+    },
+    "coevolution": {
+      "name": "coevolution",
+      "type": "principle",
+      "tests": {
+        "metadata": {
+          "valid": true,
+          "name": "coevolution",
+          "type": "principle",
+          "version": "1.0.0",
+          "description": "Specifications and code are conversation partners that inform each other",
+          "tags": [
+            "coevolution",
+            "specs",
+            "dialogue",
+            "pragmatism"
+          ],
+          "license": "MIT"
+        },
+        "content": {
+          "loaded": true,
+          "length": 6991,
+          "preview": "# Principle: Coevolution\n\n## Core Tenet\nSpecifications and code are conversation partners. Neither is purely authoritative\u2014they inform each other in a continuous dialogue.\n\n## Motivation\n\nThe traditio"
+        },
+        "dependencies": {
+          "principles": [],
+          "constitutions": [],
+          "tools": [],
+          "agents": [],
+          "templates": [],
+          "suggests": [
+            "ruthless-minimalism",
+            "emergent-design"
+          ]
+        },
+        "conflicts": {
+          "principles": [
+            "specification-driven-absolute"
+          ],
+          "tools": [],
+          "agents": [],
+          "reason": "Pure spec-first and pure code-first are both rejected by coevolution"
+        },
+        "yaml_structure": {
+          "exists": true,
+          "path": "/home/user/amplifier/forge/elements/principle/coevolution/element.yaml"
+        }
+      },
+      "status": "success"
+    }
+  },
+  "error_handling": {
+    "nonexistent-principle": {
+      "status": "correct_error",
+      "error": "Element not found: nonexistent-principle"
+    },
+    "fake-tool": {
+      "status": "correct_error",
+      "error": "Element not found: fake-tool"
+    },
+    "missing-agent": {
+      "status": "correct_error",
+      "error": "Element not found: missing-agent"
+    }
+  },
+  "health_status": "healthy"
+}

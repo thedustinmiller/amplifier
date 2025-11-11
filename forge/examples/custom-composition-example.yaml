@@ -1,0 +1,66 @@
+# Example Custom Composition
+# This demonstrates a custom Forge composition created from scratch
+# Tested and validated: 2025-11-11 (19/19 tests passing)
+
+composition:
+  name: test-composition
+  type: preset
+  version: 1.0.0
+  description: Custom test composition with both principles and file memory
+
+elements:
+  # Principles define development philosophy
+  principles:
+    - ruthless-minimalism  # Ship simplest thing first
+    - coevolution          # Specs and code inform each other
+
+  # Other element types (not used in this example)
+  constitutions: []  # Governance rules and constraints
+  tools: []          # Executable tools and utilities
+  agents: []         # AI agents for automation
+  templates: []      # Code generation templates
+  hooks: {}          # Lifecycle hooks (pre_commit, post_generate, etc)
+  queries: []        # Saved memory queries
+
+settings:
+  # Memory configuration - file-based storage
+  memory:
+    provider: file
+    config:
+      base_path: .forge/memory  # Relative to project root
+      compression: false         # No compression for readability
+
+  # Agent orchestration - how multiple agents coordinate
+  agent_orchestration:
+    mode: sequential    # Run agents one at a time
+    max_parallel: 2     # Max concurrent agents (if mode supports it)
+
+  # Tool-specific default settings
+  tool_defaults: {}
+
+metadata:
+  # Required fields
+  description: Test composition for validation
+  author: test-suite
+  tags:
+    - test
+    - custom
+    - minimalism
+    - coevolution
+
+  # Optional custom fields (fully extensible)
+  recommended_for:
+    - Testing composition system
+    - Validating element loading
+    - Memory integration testing
+
+  use_cases:
+    primary: End-to-end composition testing
+    secondary: Flexibility demonstration
+
+  # Any custom metadata can be added here
+  # Examples:
+  # team: platform-engineering
+  # maturity: experimental
+  # last_updated: 2025-11-11
+  # license: MIT
