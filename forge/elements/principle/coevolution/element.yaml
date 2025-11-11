@@ -1,0 +1,39 @@
+metadata:
+  name: coevolution
+  type: principle
+  version: 1.0.0
+  description: Specifications and code are conversation partners that inform each other
+  author: core
+  tags:
+    - coevolution
+    - specs
+    - dialogue
+    - pragmatism
+  license: MIT
+
+dependencies:
+  principles: []
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - ruthless-minimalism
+    - emergent-design
+
+conflicts:
+  principles:
+    - specification-driven-absolute
+  tools: []
+  agents: []
+  reason: Pure spec-first and pure code-first are both rejected by coevolution
+
+interface:
+  inputs: {}
+  outputs: {}
+  role: null
+  events: []
+
+content: null
+implementation: null
+settings: {}

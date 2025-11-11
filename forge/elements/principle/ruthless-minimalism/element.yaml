@@ -1,0 +1,39 @@
+metadata:
+  name: ruthless-minimalism
+  type: principle
+  version: 1.0.0
+  description: Ship the simplest thing that could possibly work, then adapt based on real needs
+  author: core
+  tags:
+    - minimalism
+    - speed
+    - pragmatism
+  license: MIT
+
+dependencies:
+  principles: []
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - emergent-design
+    - coevolution
+
+conflicts:
+  principles:
+    - waterfall
+    - formal-verification
+  tools: []
+  agents: []
+  reason: Ruthless minimalism conflicts with upfront planning and formal methods
+
+interface:
+  inputs: {}
+  outputs: {}
+  role: null
+  events: []
+
+content: null
+implementation: null
+settings: {}

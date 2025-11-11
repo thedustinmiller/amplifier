@@ -1,0 +1,54 @@
+composition:
+  name: rapid-prototype
+  type: preset
+  version: 1.0.0
+  description: Fast iteration with emergent design and coevolving specs
+
+elements:
+  principles:
+    - ruthless-minimalism
+    - coevolution
+
+  constitutions: []
+
+  tools: []
+
+  agents: []
+
+  templates: []
+
+  hooks: {}
+
+  queries: []
+
+settings:
+  memory:
+    provider: file
+    config:
+      base_path: .forge/memory
+      compression: false
+
+  agent_orchestration:
+    mode: sequential
+    max_parallel: 3
+
+  tool_defaults: {}
+
+metadata:
+  description: |
+    Rapid prototype preset emphasizes:
+    - Ship fast, adapt based on reality
+    - Specs and code inform each other
+    - Minimal upfront planning
+    - Emergent design
+  author: core
+  tags:
+    - rapid
+    - prototyping
+    - minimalism
+    - coevolution
+  recommended_for:
+    - Greenfield projects
+    - Exploration phase
+    - Solo developers
+    - Fast iteration
