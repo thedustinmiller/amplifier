@@ -36,6 +36,9 @@ dev = [
     "mypy>=1.0",
 ]
 
+[project.scripts]
+forge = "forge.cli:main"
+
 [project.urls]
 Homepage = "https://github.com/yourorg/forge"
 Documentation = "https://github.com/yourorg/forge#readme"
