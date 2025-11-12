@@ -1,0 +1,38 @@
+metadata:
+  name: checklist-template
+  type: template
+  version: 1.0.0
+  description: Requirements quality checklist template for validating specifications
+  author: spec-kit
+  tags: [quality, validation, checklist]
+  license: MIT
+
+dependencies:
+  principles: []
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - checklist
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    feature_name: Feature name for checklist
+    spec_file: Path to feature specification
+  outputs:
+    checklist_file: Generated checklist markdown file
+  role: null
+  events: []
+
+implementation:
+  template_file: checklist-template.md
+  target_path: specs/{feature-branch}/checklist.md
+
+settings: {}

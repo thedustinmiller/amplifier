@@ -2,7 +2,7 @@
 
 This catalog describes all available elements in Forge, organized by type.
 
-## Principles (5)
+## Principles (6)
 
 ### ruthless-minimalism
 **Ship the simplest thing that could possibly work, then adapt based on real needs**
@@ -59,6 +59,18 @@ This catalog describes all available elements in Forge, organized by type.
 **Dependencies**: ruthless-minimalism
 **Suggests**: zen-architect
 **Source**: amplifier IMPLEMENTATION_PHILOSOPHY.md
+
+### spec-driven
+**Specifications as the source of truth - code serves specs, not the other way around**
+
+- Specifications don't serve code—code serves specifications
+- PRDs generate implementation, not just guide it
+- Eliminates gap between intent and implementation
+- Natural language as the lingua franca of development
+
+**Dependencies**: None
+**Suggests**: spec-template, plan-template, tasks-template
+**Source**: spec-kit SDD philosophy
 
 ## Agents (7)
 
@@ -155,7 +167,61 @@ General-purpose code review agent with focus on:
 **Role**: Code review
 **Source**: Original Forge example
 
-## Tools (5)
+## Templates (4)
+
+### spec-template
+**Feature specification template with user stories and acceptance criteria**
+
+Structured template for creating complete feature specifications:
+- User scenarios and testing with prioritized stories
+- Functional requirements with testability
+- Measurable success criteria
+- Key entities and edge cases
+
+**Dependencies**: None
+**Suggests**: specify
+**Source**: spec-kit templates
+
+### plan-template
+**Implementation plan template for technical architecture and design**
+
+Template for converting specifications into technical plans:
+- Technical context and architecture
+- Constitution compliance checking
+- Research phase for unknowns
+- Design artifacts (data models, contracts, quickstart)
+
+**Dependencies**: None
+**Suggests**: plan
+**Source**: spec-kit templates
+
+### tasks-template
+**Task breakdown template organized by user stories and phases**
+
+Template for generating executable task lists:
+- Organized by user story for independent implementation
+- Strict checklist format with IDs and file paths
+- Parallel execution opportunities
+- MVP-first implementation strategy
+
+**Dependencies**: None
+**Suggests**: tasks
+**Source**: spec-kit templates
+
+### checklist-template
+**Requirements quality checklist template for validating specifications**
+
+Template for "unit tests for requirements":
+- Content quality validation
+- Requirement completeness checks
+- Feature readiness criteria
+- Pre-planning validation gates
+
+**Dependencies**: None
+**Suggests**: specify
+**Source**: spec-kit templates
+
+## Tools (8)
 
 ### commit
 **Create well-formatted git commits with conventional commit messages**
@@ -221,6 +287,51 @@ Context-independent and junior developer friendly.
 **Category**: workflow
 **Source**: amplifier commands
 
+### specify
+**Create or update feature specification from natural language description**
+
+Specification-Driven Development workflow starter:
+- Generates feature branch with automatic numbering
+- Creates complete specification from description
+- Validates specification quality with checklist
+- Limits clarifications to max 3 critical questions
+- Supports iterative refinement
+
+**Dependencies**: spec-driven
+**Suggests**: spec-template, plan, tasks
+**Category**: specification
+**Source**: spec-kit commands
+
+### plan
+**Execute implementation planning workflow to generate technical design artifacts**
+
+Converts specifications into technical implementation plans:
+- Constitution compliance validation
+- Research phase for unknowns and decisions
+- Data model and API contract generation
+- Quickstart guide creation
+- Multi-agent context synchronization
+
+**Dependencies**: spec-driven
+**Suggests**: plan-template, specify, tasks
+**Category**: planning
+**Source**: spec-kit commands
+
+### tasks
+**Generate actionable, dependency-ordered task list from design artifacts**
+
+Breaks implementation plans into executable tasks:
+- Organized by user story for independent delivery
+- Strict checklist format with IDs and paths
+- Parallel execution opportunities identified
+- MVP-first implementation strategy
+- Tests optional unless explicitly requested
+
+**Dependencies**: spec-driven
+**Suggests**: tasks-template, plan, specify
+**Category**: planning
+**Source**: spec-kit commands
+
 ### scaffold (existing)
 **Scaffolds new project structures and boilerplate code**
 
@@ -268,6 +379,19 @@ Comprehensive workflow covering:
 
 **Elements**: 5 principles, 7 agents, 5 tools, 1 hook
 **Use Case**: Production development with quality gates
+
+### spec-kit-workflow
+**Specification-Driven Development workflow from spec-kit**
+
+SDD workflow for specification-first development:
+- Natural language to specification (specify)
+- Specification to implementation plan (plan)
+- Plan to executable tasks (tasks)
+- Continuous refinement and validation
+- Template-driven consistency
+
+**Elements**: 2 principles, 4 templates, 3 tools
+**Use Case**: Specification-first development, requirements clarity, team collaboration
 
 ## Usage Patterns
 
@@ -343,27 +467,32 @@ settings:
 
 ## Element Statistics
 
-- **Total Elements**: 18
-  - Principles: 5
+- **Total Elements**: 26
+  - Principles: 6
   - Agents: 7
-  - Tools: 5
+  - Templates: 4
+  - Tools: 8
   - Hooks: 1
 
 - **Source Distribution**:
   - amplifier: 13 elements (6 agents, 4 tools, 3 principles)
+  - spec-kit: 8 elements (4 templates, 3 tools, 1 principle)
   - Original Forge: 5 elements (1 agent, 1 tool, 2 principles, 1 hook)
 
 - **Coverage**:
   - Core Development: zen-architect, modular-builder, code-reviewer
   - Quality Assurance: test-coverage, security-guardian, bug-hunter
-  - Workflow Management: commit, review-changes, modular-build, create-plan
+  - Workflow Management: commit, review-changes, modular-build, create-plan, specify, plan, tasks
+  - Templates & Structure: spec-template, plan-template, tasks-template, checklist-template
   - Project Setup: scaffold, session-logger
-  - Philosophy: ruthless-minimalism, coevolution, respect-user-time, zero-bs-principle, analysis-first
+  - Philosophy: ruthless-minimalism, coevolution, respect-user-time, zero-bs-principle, analysis-first, spec-driven
 
 ## Next Steps
 
 1. **Explore Elements**: Browse `forge/elements/` to see full specifications
-2. **Try Examples**: Test with `forge/examples/amplifier-workflow.yaml`
+2. **Try Examples**:
+   - Implementation-first: `forge/examples/amplifier-workflow.yaml`
+   - Specification-first: `forge/examples/spec-kit-workflow.yaml`
 3. **Create Compositions**: Mix and match elements for your workflow
 4. **Generate Integrations**: Use `forge generate claude-code` to create `.claude/` structure
 5. **Extend Library**: Add your own elements following the established patterns

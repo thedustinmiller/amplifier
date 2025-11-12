@@ -1,0 +1,53 @@
+metadata:
+  name: tasks
+  type: tool
+  version: 1.0.0
+  description: Generate actionable, dependency-ordered task list from design artifacts
+  author: spec-kit
+  tags: [tasks, implementation, workflow, SDD]
+  license: MIT
+
+dependencies:
+  principles:
+    - spec-driven
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - tasks-template
+    - plan
+    - specify
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    feature_dir: Feature specification directory
+    plan_file: Implementation plan (required)
+    spec_file: Feature specification (required)
+    data_model_file: Data model specification (optional)
+    contracts_dir: API contracts directory (optional)
+  outputs:
+    tasks_file: Generated task list file
+  role: null
+  events: []
+
+implementation:
+  instructions_file: tasks.md
+  allowed_tools:
+    - Bash
+    - Read
+    - Write
+    - Edit
+  scripts:
+    sh: scripts/bash/check-prerequisites.sh --json
+    ps: scripts/powershell/check-prerequisites.ps1 -Json
+
+settings:
+  category: planning
+  task_format: strict_checklist

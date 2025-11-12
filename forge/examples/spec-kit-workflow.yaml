@@ -1,0 +1,86 @@
+composition:
+  name: spec-kit-workflow
+  version: 1.0.0
+  description: Specification-driven development workflow from spec-kit
+
+metadata:
+  author: spec-kit
+  created: 2025-11-12
+  tags: [SDD, specification-first, planning]
+
+elements:
+  principles:
+    - spec-driven
+    - ruthless-minimalism
+
+  templates:
+    - spec-template
+    - plan-template
+    - tasks-template
+    - checklist-template
+
+  tools:
+    - specify
+    - plan
+    - tasks
+
+  agents: []
+
+  hooks:
+    SessionStart: session-logger
+
+  constitutions: []
+
+  queries: []
+
+settings:
+  tool_defaults:
+    specify:
+      max_clarifications: 3
+      auto_validate: true
+    plan:
+      include_research: true
+      update_agent_context: true
+    tasks:
+      format: strict_checklist
+      organize_by_story: true
+      tests_optional: true
+
+  workflow_sequence:
+    - name: Specification
+      command: specify
+      description: Create feature specification from natural language
+      outputs: [spec.md, checklist.md]
+
+    - name: Planning
+      command: plan
+      description: Generate implementation plan and design artifacts
+      requires: [spec.md]
+      outputs: [plan.md, research.md, data-model.md, contracts/]
+
+    - name: Task Generation
+      command: tasks
+      description: Create dependency-ordered task list
+      requires: [plan.md, spec.md]
+      outputs: [tasks.md]
+
+  documentation:
+    philosophy: |
+      Specification-Driven Development (SDD) inverts the traditional code-first
+      approach. Specifications are the source of truth, and code serves specs.
+      This workflow enables:
+      - Natural language → executable specifications
+      - Specifications → implementation plans
+      - Plans → actionable tasks
+      - Continuous refinement through feedback
+
+    usage: |
+      1. Start with a feature idea in natural language
+      2. Use 'specify' to create a complete specification
+      3. Use 'plan' to generate technical design
+      4. Use 'tasks' to break down into executable steps
+      5. Implement tasks incrementally by user story priority
+
+  compatibility:
+    forge_version: ">=0.1.0"
+    claude_code_version: any

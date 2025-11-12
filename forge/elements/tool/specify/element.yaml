@@ -1,0 +1,51 @@
+metadata:
+  name: specify
+  type: tool
+  version: 1.0.0
+  description: Create or update feature specification from natural language description
+  author: spec-kit
+  tags: [specification, SDD, requirements, workflow]
+  license: MIT
+
+dependencies:
+  principles:
+    - spec-driven
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - spec-template
+    - plan
+    - tasks
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    feature_description: Natural language description of the feature
+  outputs:
+    spec_file: Generated specification file
+    branch_name: Created feature branch name
+    checklist_file: Specification quality checklist
+  role: null
+  events: []
+
+implementation:
+  instructions_file: specify.md
+  allowed_tools:
+    - Bash
+    - Read
+    - Write
+    - Edit
+  scripts:
+    sh: scripts/bash/create-new-feature.sh --json "{ARGS}"
+    ps: scripts/powershell/create-new-feature.ps1 -Json "{ARGS}"
+
+settings:
+  category: specification
+  max_clarifications: 3

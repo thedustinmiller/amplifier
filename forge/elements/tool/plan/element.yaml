@@ -1,0 +1,56 @@
+metadata:
+  name: plan
+  type: tool
+  version: 1.0.0
+  description: Execute implementation planning workflow to generate technical design artifacts
+  author: spec-kit
+  tags: [planning, architecture, design, SDD]
+  license: MIT
+
+dependencies:
+  principles:
+    - spec-driven
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - plan-template
+    - specify
+    - tasks
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    feature_spec: Path to feature specification file
+  outputs:
+    implementation_plan: Generated implementation plan file
+    research_file: Research findings document
+    data_model_file: Data model specification
+    contracts_dir: API contracts directory
+    quickstart_file: Quickstart validation guide
+  role: null
+  events: []
+
+implementation:
+  instructions_file: plan.md
+  allowed_tools:
+    - Bash
+    - Read
+    - Write
+    - Edit
+    - Task
+  scripts:
+    sh: scripts/bash/setup-plan.sh --json
+    ps: scripts/powershell/setup-plan.ps1 -Json
+  agent_scripts:
+    sh: scripts/bash/update-agent-context.sh __AGENT__
+    ps: scripts/powershell/update-agent-context.ps1 -AgentType __AGENT__
+
+settings:
+  category: planning

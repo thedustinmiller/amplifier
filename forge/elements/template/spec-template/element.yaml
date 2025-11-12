@@ -1,0 +1,38 @@
+metadata:
+  name: spec-template
+  type: template
+  version: 1.0.0
+  description: Feature specification template with user stories and acceptance criteria
+  author: spec-kit
+  tags: [specification, requirements, user-stories]
+  license: MIT
+
+dependencies:
+  principles: []
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - specify
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    feature_name: Feature name for the specification
+    feature_description: Description of the feature to specify
+  outputs:
+    spec_file: Generated specification markdown file
+  role: null
+  events: []
+
+implementation:
+  template_file: spec-template.md
+  target_path: specs/{feature-branch}/spec.md
+
+settings: {}

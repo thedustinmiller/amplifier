@@ -1,0 +1,38 @@
+metadata:
+  name: plan-template
+  type: template
+  version: 1.0.0
+  description: Implementation plan template for technical architecture and design
+  author: spec-kit
+  tags: [planning, architecture, design]
+  license: MIT
+
+dependencies:
+  principles: []
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - plan
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    feature_name: Feature name for implementation plan
+    spec_file: Path to feature specification
+  outputs:
+    plan_file: Generated plan markdown file
+  role: null
+  events: []
+
+implementation:
+  template_file: plan-template.md
+  target_path: specs/{feature-branch}/plan.md
+
+settings: {}

@@ -1,0 +1,33 @@
+metadata:
+  name: spec-driven
+  type: principle
+  version: 1.0.0
+  description: Specifications as the source of truth - code serves specs, not the other way around
+  author: spec-kit
+  tags: [SDD, specification-first, requirements]
+  license: MIT
+
+dependencies:
+  principles: []
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - spec-template
+    - plan-template
+    - tasks-template
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs: {}
+  outputs: {}
+  role: null
+  events: []
+
+settings: {}

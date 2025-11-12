@@ -1,0 +1,39 @@
+metadata:
+  name: tasks-template
+  type: template
+  version: 1.0.0
+  description: Task breakdown template organized by user stories and phases
+  author: spec-kit
+  tags: [tasks, implementation, user-stories]
+  license: MIT
+
+dependencies:
+  principles: []
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - tasks
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    feature_name: Feature name for task breakdown
+    spec_file: Path to feature specification
+    plan_file: Path to implementation plan
+  outputs:
+    tasks_file: Generated tasks markdown file
+  role: null
+  events: []
+
+implementation:
+  template_file: tasks-template.md
+  target_path: specs/{feature-branch}/tasks.md
+
+settings: {}
