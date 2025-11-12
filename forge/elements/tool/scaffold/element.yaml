@@ -1,68 +1,61 @@
-metadata:
+element:
   name: scaffold
   type: tool
-  version: 1.0.0
-  description: Scaffolds new project structures and boilerplate code
-  author: forge
-  tags: [scaffolding, project-setup]
-  license: MIT
+  version: 1.1.0
+  description: Scaffolds new project structures and boilerplate code with templates
 
 dependencies:
   principles: []
-  tools: []
-  agents: []
-  templates: []
-  suggests:
-    - minimal-plan
 
-conflicts:
-  principles: []
-  tools: []
-  agents: []
-  reason: null
+suggests:
+  principles:
+    - ruthless-minimalism
 
 interface:
   inputs:
-    project_type: "Type of project to scaffold"
-    options: "Scaffolding options"
+    project_type: "Type of project to scaffold (python, typescript, react, api)"
+    project_name: "Name of the project"
+    project_description: "Brief description of the project"
   outputs:
-    files_created: "List of created files"
-  role: null
-  events: []
+    files_created: "List of created files and directories"
 
 implementation:
+  scripts:
+    python: scripts/scaffold-python.sh
+  templates:
+    python:
+      - templates/python/pyproject.toml.template
+      - templates/python/README.md.template
+      - templates/python/src/__init__.py.template
+      - templates/python/src/cli.py.template
   instructions: |
-    # Scaffold Command
+    # Scaffold Tool
 
-    Scaffold a new project structure based on the specified type.
+    Scaffolds new project structures with templates and boilerplate.
 
     ## Usage
 
-    `/scaffold <project-type> [options]`
+    ```bash
+    # Python project
+    ./scripts/scaffold-python.sh project-name "Project description"
+    ```
 
     ## Supported Project Types
 
-    - `python` - Python project with standard structure
-    - `typescript` - TypeScript project with tsconfig
-    - `react` - React application
-    - `api` - REST API with OpenAPI
+    - `python` - Modern Python project with pyproject.toml, CLI structure
 
-    ## Process
+    ## Templates Available
 
-    1. Determine project type from arguments
-    2. Create directory structure
-    3. Generate boilerplate files (README, config files, etc.)
-    4. Initialize git repository if not exists
-    5. Report created files to user
+    Python project includes:
+    - pyproject.toml with modern build system
+    - Source package structure (src/project_name/)
+    - CLI entry point
+    - Tests directory
+    - README with development instructions
+    - .gitignore
 
-    ## Example
-
-    ```
-    /scaffold python --name my-project --package-manager uv
-    ```
-  allowed_tools:
-    - Bash
-    - Write
-    - Edit
-
-settings: {}
+metadata:
+  author: forge
+  tags: [scaffolding, project-setup, templates]
+  license: MIT
+  updated: 2025-11-12

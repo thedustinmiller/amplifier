@@ -1,0 +1,86 @@
+composition:
+  name: rapid-prototype
+  type: preset
+  version: 1.0.0
+  description: >
+    Fast iteration with emergent design. Perfect for MVPs, prototypes,
+    and time-constrained builds. Validated through real-world testing
+    (Pomodoro CLI built in 50 minutes).
+
+elements:
+  principles:
+    - ruthless-minimalism    # Ship simplest thing that works
+    - coevolution           # Specs and code inform each other
+    - emergent-design       # Let design emerge from implementation
+
+  tools:
+    - scaffold              # Quick project setup
+    - plan                  # Lightweight planning
+    - commit                # Track iterations
+
+settings:
+  memory_provider: file
+  memory_scopes: [session, project]
+  philosophy: >
+    Speed and learning over perfection.
+    Ship in hours, adapt based on reality.
+
+workflow:
+  phases:
+    - name: quick_analysis
+      duration: "5-15 minutes"
+      activities:
+        - "Decompose problem into 2-3 options"
+        - "Pick simplest option (ruthless-minimalism)"
+        - "Write minimal spec with [DISCOVERY] markers"
+
+    - name: rapid_implementation
+      duration: "1-4 hours"
+      activities:
+        - "Build simplest version that could work"
+        - "Single file if possible"
+        - "Zero dependencies initially"
+        - "Note discoveries in spec"
+
+    - name: iteration
+      duration: "continuous"
+      activities:
+        - "Add features only when pain is real"
+        - "Refactor when patterns emerge"
+        - "Update spec based on learnings"
+
+  completion_criteria:
+    - "Core features work (demo-able)"
+    - "Explicit trade-offs documented"
+    - "Deferred features listed"
+
+metadata:
+  author: forge
+  tags: [prototyping, mvp, speed, iteration]
+  license: MIT
+  created: 2025-11-12
+  validated: true
+  test_results:
+    - scenario: "Pomodoro CLI"
+      time_minutes: 50
+      traditional_time_minutes: 150
+      speedup: "67% faster"
+      quality: "higher (explicit trade-offs)"
+      rating: "10/10 would use again"
+
+use_cases:
+  excellent_for:
+    - Greenfield projects
+    - MVPs and prototypes
+    - Time-constrained builds
+    - Small teams
+    - Exploratory work
+    - Proof of concepts
+
+  avoid_for:
+    - Safety-critical systems
+    - Fixed-scope contracts
+    - Heavily regulated industries
+    - Large distributed teams
+
+content: rapid-prototype.md

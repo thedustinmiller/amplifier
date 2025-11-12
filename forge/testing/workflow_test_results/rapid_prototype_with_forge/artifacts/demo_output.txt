@@ -1,0 +1,22 @@
+=== Pomodoro CLI Demo ===
+
+$ pomodoro stats
+📊 Pomodoros completed: 1
+Great start! Keep the momentum going.
+
+$ pomodoro start
+🍅 Pomodoro started! 25:00 remaining...
+Focus on your task. Run 'pomodoro status' to check progress.
+
+$ pomodoro status
+🍅 24:59 remaining in current pomodoro
+
+--- Simulating timer completion ---
+
+$ pomodoro status
+✅ Pomodoro complete! Great work!
+Take a 5-minute break, then run 'pomodoro start' for the next one.
+
+$ pomodoro stats
+📊 Pomodoros completed: 2
+You're building a good habit!

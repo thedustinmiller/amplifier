@@ -1,0 +1,34 @@
+element:
+  name: emergent-design
+  type: principle
+  version: 1.0.0
+  description: >
+    Design emerges from implementation rather than being fully specified upfront.
+    Architecture evolves as you learn from building.
+
+dependencies:
+  principles:
+    - ruthless-minimalism
+    - coevolution
+
+suggests:
+  principles:
+    - analysis-first  # Quick analysis can inform starting direction
+
+conflicts:
+  # This principle conflicts with approaches requiring upfront design
+  principles: []
+
+interface:
+  provides:
+    - emergent_design_pattern
+    - refactoring_triggers
+    - simplicity_bias
+
+metadata:
+  author: forge
+  tags: [design, emergence, agile, refactoring]
+  license: MIT
+  created: 2025-11-12
+
+content: emergent-design.md

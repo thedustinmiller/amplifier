@@ -1,0 +1,35 @@
+# {{project_name}}
+
+{{project_description}}
+
+## Installation
+
+```bash
+pip install -e .
+```
+
+## Development
+
+```bash
+# Install dev dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest
+
+# Format code
+black src/
+
+# Lint code
+ruff check src/
+```
+
+## Usage
+
+```bash
+{{project_name}} --help
+```
+
+## License
+
+MIT

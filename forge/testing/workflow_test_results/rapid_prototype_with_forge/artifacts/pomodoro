@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+"""
+Pomodoro Timer CLI - Ruthlessly Minimal Prototype
+Built using Forge methodology: ruthless-minimalism + coevolution
+"""
+import sys
+import time
+from datetime import datetime, timedelta
+from pathlib import Path
+
+# State files in user's home to persist across sessions
+STATE_DIR = Path.home() / ".pomodoro"
+STATE_DIR.mkdir(exist_ok=True)
+STATE_FILE = STATE_DIR / "current.txt"
+STATS_FILE = STATE_DIR / "stats.txt"
+
+
+def start():
+    """Start a 25-minute pomodoro timer."""
+    end_time = datetime.now() + timedelta(minutes=25)
+    STATE_FILE.write_text(end_time.isoformat())
+    print("🍅 Pomodoro started! 25:00 remaining...")
+    print("Focus on your task. Run 'pomodoro status' to check progress.")
+
+
+def status():
+    """Show time remaining in current pomodoro."""
+    if not STATE_FILE.exists():
+        print("❌ No active pomodoro. Run 'pomodoro start' to begin.")
+        return
+
+    try:
+        end_time = datetime.fromisoformat(STATE_FILE.read_text().strip())
+        remaining = end_time - datetime.now()
+
+        if remaining.total_seconds() > 0:
+            mins, secs = divmod(int(remaining.total_seconds()), 60)
+            print(f"🍅 {mins:02d}:{secs:02d} remaining in current pomodoro")
+        else:
+            print("✅ Pomodoro complete! Great work!")
+            print("Take a 5-minute break, then run 'pomodoro start' for the next one.")
+
+            # Increment stats
+            count = 0
+            if STATS_FILE.exists():
+                try:
+                    count = int(STATS_FILE.read_text().strip())
+                except ValueError:
+                    pass
+
+            STATS_FILE.write_text(str(count + 1))
+            STATE_FILE.unlink()  # Clear current timer
+
+    except (ValueError, FileNotFoundError):
+        print("⚠️  Timer data corrupted. Run 'pomodoro start' to begin fresh.")
+        STATE_FILE.unlink(missing_ok=True)
+
+
+def stats():
+    """Show pomodoro completion stats."""
+    count = 0
+    if STATS_FILE.exists():
+        try:
+            count = int(STATS_FILE.read_text().strip())
+        except ValueError:
+            pass
+
+    print(f"📊 Pomodoros completed: {count}")
+
+    if count == 0:
+        print("Start your first pomodoro with 'pomodoro start'!")
+    elif count == 1:
+        print("Great start! Keep the momentum going.")
+    elif count < 5:
+        print("You're building a good habit!")
+    else:
+        print("Impressive focus! You're on fire! 🔥")
+
+
+def reset():
+    """Reset stats (hidden feature for testing)."""
+    STATS_FILE.unlink(missing_ok=True)
+    STATE_FILE.unlink(missing_ok=True)
+    print("🔄 Stats and timer reset.")
+
+
+def main():
+    """Main entry point."""
+    commands = {
+        'start': start,
+        'status': status,
+        'stats': stats,
+        'reset': reset,
+    }
+
+    cmd = sys.argv[1] if len(sys.argv) > 1 else 'status'
+
+    if cmd in commands:
+        commands[cmd]()
+    else:
+        print(f"❌ Unknown command: {cmd}")
+        print("Available commands: start, status, stats")
+        sys.exit(1)
+
+
+if __name__ == '__main__':
+    main()

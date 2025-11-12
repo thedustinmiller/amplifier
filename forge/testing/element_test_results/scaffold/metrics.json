@@ -1,0 +1,260 @@
+{
+  "test_metadata": {
+    "element_name": "scaffold",
+    "element_type": "tool",
+    "version": "1.0.0",
+    "test_date": "2025-11-12",
+    "tester": "Claude Code Agent",
+    "test_duration_seconds": 420
+  },
+  "overall_scores": {
+    "overall_rating": 4.0,
+    "structure_score": 8.0,
+    "documentation_score": 7.0,
+    "implementation_score": 0.0,
+    "usability_score": 3.0,
+    "integration_score": 7.0,
+    "completeness_percentage": 29
+  },
+  "element_structure": {
+    "yaml_valid": true,
+    "schema_compliant": true,
+    "loads_successfully": true,
+    "file_count": 1,
+    "total_size_bytes": 1346
+  },
+  "metadata_completeness": {
+    "has_name": true,
+    "has_type": true,
+    "has_version": true,
+    "has_description": true,
+    "has_author": true,
+    "has_tags": true,
+    "has_license": true,
+    "tag_count": 2,
+    "completeness_percentage": 100
+  },
+  "dependencies": {
+    "principle_dependencies": 0,
+    "constitution_dependencies": 0,
+    "tool_dependencies": 0,
+    "agent_dependencies": 0,
+    "template_dependencies": 0,
+    "suggestions": 1,
+    "total_dependencies": 0,
+    "has_conflicts": false
+  },
+  "interface_quality": {
+    "has_inputs": true,
+    "has_outputs": true,
+    "has_role": false,
+    "has_events": false,
+    "input_count": 2,
+    "output_count": 1,
+    "has_input_schema": false,
+    "has_output_schema": false,
+    "interface_completeness_percentage": 40
+  },
+  "implementation_analysis": {
+    "has_instructions": true,
+    "has_instructions_file": false,
+    "has_scripts": false,
+    "has_bash_script": false,
+    "has_powershell_script": false,
+    "has_agent_scripts": false,
+    "has_templates": false,
+    "has_settings": false,
+    "instructions_length_chars": 566,
+    "instructions_line_count": 31,
+    "allowed_tools_count": 3,
+    "implementation_completeness_percentage": 20
+  },
+  "functionality_tests": {
+    "yaml_validation": {
+      "passed": true,
+      "score": 10
+    },
+    "element_loading": {
+      "passed": true,
+      "score": 10
+    },
+    "metadata_validation": {
+      "passed": true,
+      "score": 10
+    },
+    "interface_definition": {
+      "passed": true,
+      "score": 6,
+      "notes": "Present but underspecified"
+    },
+    "implementation_artifacts": {
+      "passed": false,
+      "score": 0,
+      "notes": "No templates, scripts, or implementation files"
+    },
+    "functional_invocation": {
+      "passed": false,
+      "score": 0,
+      "notes": "Cannot scaffold actual projects"
+    },
+    "total_tests": 6,
+    "tests_passed": 3,
+    "tests_failed": 2,
+    "tests_partial": 1,
+    "pass_rate_percentage": 50
+  },
+  "usability_metrics": {
+    "documentation_clarity": 8,
+    "example_quality": 7,
+    "error_handling_docs": 0,
+    "troubleshooting_guide": 0,
+    "has_usage_examples": true,
+    "has_code_examples": false,
+    "example_count": 1
+  },
+  "completeness_metrics": {
+    "required_components": {
+      "element_yaml": true,
+      "instructions": true,
+      "templates": false,
+      "scripts": false,
+      "documentation": false,
+      "examples": false,
+      "tests": false,
+      "total_required": 7,
+      "present": 2,
+      "percentage": 29
+    },
+    "expected_files": {
+      "element.yaml": true,
+      "scaffold.md": false,
+      "bash_script": false,
+      "powershell_script": false,
+      "python_template": false,
+      "typescript_template": false,
+      "react_template": false,
+      "api_template": false,
+      "total_expected": 8,
+      "present": 1,
+      "percentage": 13
+    },
+    "supported_project_types": {
+      "python": false,
+      "typescript": false,
+      "react": false,
+      "api": false,
+      "total_declared": 4,
+      "implemented": 0,
+      "percentage": 0
+    }
+  },
+  "integration_metrics": {
+    "forge_system_compatible": true,
+    "element_loader_compatible": true,
+    "follows_conventions": true,
+    "has_conflicts": false,
+    "integration_score": 7
+  },
+  "comparison_with_similar_tools": {
+    "tools_compared": ["specify", "plan", "commit"],
+    "has_external_instructions": false,
+    "has_scripts": false,
+    "has_settings": false,
+    "feature_parity_percentage": 25
+  },
+  "identified_issues": {
+    "critical": [
+      "No project templates for any supported type",
+      "No scaffolding scripts (bash/powershell)",
+      "Cannot perform primary function (scaffolding projects)",
+      "Missing implementation artifacts"
+    ],
+    "major": [
+      "No input validation schema",
+      "Vague 'options' parameter definition",
+      "No error handling specification",
+      "Output format not specified"
+    ],
+    "minor": [
+      "No external instructions file",
+      "Empty settings object",
+      "No category defined",
+      "No example outputs"
+    ],
+    "critical_count": 4,
+    "major_count": 4,
+    "minor_count": 4,
+    "total_issues": 12
+  },
+  "recommendations": {
+    "priority_1_critical": [
+      "Create project templates for Python, TypeScript, React, and API",
+      "Implement scaffolding scripts (bash and powershell)",
+      "Enhance interface specification with schemas",
+      "Define error handling and output formats"
+    ],
+    "priority_2_important": [
+      "Add settings configuration",
+      "Create external instructions file (scaffold.md)",
+      "Add example scaffolded projects",
+      "Implement validation logic"
+    ],
+    "priority_3_enhancement": [
+      "Implement extensibility mechanisms",
+      "Add validation and testing suite",
+      "Improve documentation",
+      "Add advanced features (interactive prompts, hooks)"
+    ],
+    "total_recommendations": 12,
+    "blocking_recommendations": 4
+  },
+  "test_verdict": {
+    "status": "FAIL",
+    "ready_for_use": false,
+    "ready_for_deployment": false,
+    "needs_implementation": true,
+    "needs_testing": true,
+    "blocking_issues": 4,
+    "recommendation": "Do not deploy. Requires substantial implementation work before providing value."
+  },
+  "quality_gates": {
+    "structure_valid": true,
+    "metadata_complete": true,
+    "documentation_adequate": true,
+    "implementation_present": false,
+    "functionally_complete": false,
+    "tested": false,
+    "production_ready": false,
+    "gates_passed": 3,
+    "gates_total": 7,
+    "gates_pass_rate": 43
+  },
+  "risk_assessment": {
+    "deployment_risk": "HIGH",
+    "user_impact": "CRITICAL",
+    "technical_debt": "HIGH",
+    "maintenance_burden": "LOW",
+    "security_concerns": "NONE",
+    "risk_level": 8,
+    "risk_notes": "Element cannot perform its primary function. Deploying would mislead users."
+  },
+  "next_steps": {
+    "immediate": [
+      "Implement at least one project type template (suggest Python)",
+      "Create basic scaffolding script",
+      "Test basic scaffolding functionality"
+    ],
+    "short_term": [
+      "Implement remaining project templates",
+      "Add input validation",
+      "Create comprehensive tests"
+    ],
+    "long_term": [
+      "Add extensibility features",
+      "Implement advanced scaffolding options",
+      "Create template marketplace/registry"
+    ],
+    "retest_required": true,
+    "retest_after": "Priority 1 recommendations implemented"
+  }
+}

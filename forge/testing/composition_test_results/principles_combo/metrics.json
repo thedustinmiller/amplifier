@@ -1,0 +1,225 @@
+{
+  "test_metadata": {
+    "test_id": "principles_combo_001",
+    "date": "2025-11-12",
+    "composition": ["coevolution", "ruthless-minimalism", "analysis-first"],
+    "scenario": "URL Shortener Service",
+    "evaluator": "Claude Sonnet 4.5"
+  },
+  "compatibility_scores": {
+    "overall": 8.5,
+    "analysis_first_with_ruthless_minimalism": 9.0,
+    "ruthless_minimalism_with_coevolution": 9.0,
+    "analysis_first_with_coevolution": 8.0
+  },
+  "tension_severity": {
+    "analysis_vs_minimalism_speed": "LOW",
+    "analysis_vs_coevolution_planning": "LOW",
+    "minimalism_vs_analysis_thoroughness": "VERY_LOW",
+    "overall_tension_level": "MINIMAL"
+  },
+  "phase_results": {
+    "analysis_phase": {
+      "duration_minutes": 15,
+      "target_duration_minutes": 15,
+      "options_considered": 3,
+      "decision_quality": 9.0,
+      "success": true
+    },
+    "scoping_phase": {
+      "duration_minutes": 10,
+      "features_deferred": 10,
+      "features_included": 3,
+      "scope_discipline": 9.5,
+      "success": true
+    },
+    "implementation_phase": {
+      "duration_minutes": 180,
+      "target_duration_minutes": 180,
+      "lines_of_code": 147,
+      "target_lines_of_code": 150,
+      "success": true
+    },
+    "iteration_phase": {
+      "duration_minutes": 45,
+      "iterations": 2,
+      "discoveries": 5,
+      "spec_updates": 3,
+      "success": true
+    }
+  },
+  "effectiveness_metrics": {
+    "development_speed": {
+      "score": 9.5,
+      "target_hours": 4.0,
+      "actual_hours": 4.17,
+      "variance_percent": 4.2
+    },
+    "code_quality": {
+      "score": 9.0,
+      "lines_of_code": 147,
+      "complexity": "low",
+      "maintainability": "high"
+    },
+    "feature_completeness": {
+      "score": 10.0,
+      "core_features_implemented": 3,
+      "core_features_total": 3,
+      "nice_to_haves_deferred": 10
+    },
+    "spec_accuracy": {
+      "score": 8.0,
+      "initial_accuracy_percent": 60,
+      "final_accuracy_percent": 95,
+      "improvement_percent": 35
+    },
+    "decision_quality": {
+      "score": 9.0,
+      "good_decisions": 6,
+      "regrettable_decisions": 0
+    }
+  },
+  "interaction_patterns": {
+    "sequential_application": true,
+    "minimalism_as_filter": true,
+    "analysis_prevents_paralysis": true,
+    "coevolution_validates_analysis": true,
+    "pattern_effectiveness": 9.0
+  },
+  "workflow_sequence": {
+    "step_1": "analysis_first",
+    "step_2": "ruthless_minimalism",
+    "step_3": "coevolution",
+    "sequence_effectiveness": 9.5
+  },
+  "precedence_rules": {
+    "starting_new_feature": "analysis_first",
+    "choosing_between_options": "ruthless_minimalism",
+    "implementing_chosen_option": "coevolution",
+    "discovering_new_requirements": "ruthless_minimalism",
+    "considering_refactoring": "ruthless_minimalism",
+    "spec_code_divergence": "coevolution",
+    "time_pressure": "ruthless_minimalism"
+  },
+  "strengths": {
+    "synergy_between_principles": 9.0,
+    "clear_workflow": 9.0,
+    "fast_time_to_value": 9.0,
+    "prevents_over_and_under_planning": 9.0,
+    "adaptability": 8.0
+  },
+  "weaknesses": {
+    "requires_discipline": 7.0,
+    "temptation_to_over_iterate": 7.0,
+    "stakeholder_expectations": 6.0,
+    "documentation_lag": 7.0
+  },
+  "use_case_suitability": {
+    "greenfield_projects": 9.5,
+    "small_teams": 9.0,
+    "time_constrained_projects": 9.5,
+    "exploratory_work": 9.0,
+    "mvp_prototypes": 10.0,
+    "side_projects": 9.0,
+    "large_teams": 5.0,
+    "fixed_scope_contracts": 4.0,
+    "safety_critical_systems": 3.0,
+    "regulated_industries": 4.0,
+    "well_understood_domains": 6.0
+  },
+  "comparison_to_alternatives": {
+    "vs_waterfall": {
+      "speed_multiplier": 20.0,
+      "adaptability": "much_higher",
+      "predictability": "lower",
+      "documentation_formality": "less"
+    },
+    "vs_cowboy_coding": {
+      "quality": "higher",
+      "maintainability": "higher",
+      "speed_difference_minutes": -15,
+      "learning_capture": "much_better"
+    },
+    "vs_analysis_paralysis": {
+      "speed_multiplier": 10.0,
+      "completeness": "lower",
+      "pragmatism": "much_higher",
+      "stress_level": "much_lower"
+    }
+  },
+  "key_discoveries": {
+    "analysis_enables_minimalism": {
+      "importance": "critical",
+      "description": "Analysis prevents minimalism from building wrong thing"
+    },
+    "minimalism_prevents_paralysis": {
+      "importance": "critical",
+      "description": "Time limits force good decisions"
+    },
+    "coevolution_validates_both": {
+      "importance": "critical",
+      "description": "Implementation tests analysis and minimalism choices"
+    },
+    "order_matters": {
+      "importance": "high",
+      "description": "Sequential application more effective than simultaneous"
+    },
+    "constraints_are_features": {
+      "importance": "high",
+      "description": "15min analysis + 4h build constraints improve outcomes"
+    }
+  },
+  "quantitative_results": {
+    "total_time_minutes": 250,
+    "analysis_time_percent": 6.0,
+    "scoping_time_percent": 4.0,
+    "implementation_time_percent": 72.0,
+    "iteration_time_percent": 18.0,
+    "lines_of_code": 147,
+    "features_delivered": 3,
+    "features_deferred": 10,
+    "spec_code_alignment_percent": 95,
+    "learnings_captured": 8,
+    "iterations_completed": 2
+  },
+  "recommendation": {
+    "overall_rating": 8.5,
+    "status": "HIGHLY_RECOMMENDED",
+    "best_for": [
+      "Early-stage products",
+      "Small team environments",
+      "Time-sensitive builds",
+      "Learning/exploration phases"
+    ],
+    "avoid_for": [
+      "Safety-critical systems",
+      "Fixed-bid contracts",
+      "Heavily regulated industries"
+    ]
+  },
+  "future_testing_needed": {
+    "different_scenarios": [
+      "Complex architectural decisions",
+      "Performance optimization",
+      "Security-critical implementation",
+      "Legacy system integration"
+    ],
+    "different_team_sizes": [
+      "Solo developer",
+      "Pair programming",
+      "Small team (3-5)",
+      "Large team (10+)"
+    ],
+    "different_timescales": [
+      "1-hour hack",
+      "1-day sprint",
+      "1-week project",
+      "1-month project"
+    ],
+    "principle_variations": [
+      "Without analysis_first",
+      "Without ruthless_minimalism",
+      "Without coevolution"
+    ]
+  }
+}
