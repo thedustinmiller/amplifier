@@ -1,0 +1,34 @@
+composition:
+  name: example-workflow
+  type: preset
+  version: 1.0.0
+  description: Example composition demonstrating Forge + Claude Code integration
+
+elements:
+  principles:
+    - ruthless-minimalism
+    - coevolution
+  constitutions: []
+  tools:
+    - scaffold
+  agents:
+    - code-reviewer
+  templates: []
+  hooks:
+    SessionStart: session-logger
+    Stop: session-logger
+  queries: []
+
+settings:
+  memory:
+    provider: file
+    config:
+      base_path: .forge/memory
+  agent_orchestration:
+    mode: sequential
+    max_parallel: 3
+  tool_defaults: {}
+
+metadata:
+  created_by: forge
+  purpose: demonstration

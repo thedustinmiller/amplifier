@@ -1,0 +1,68 @@
+metadata:
+  name: scaffold
+  type: tool
+  version: 1.0.0
+  description: Scaffolds new project structures and boilerplate code
+  author: forge
+  tags: [scaffolding, project-setup]
+  license: MIT
+
+dependencies:
+  principles: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - minimal-plan
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    project_type: "Type of project to scaffold"
+    options: "Scaffolding options"
+  outputs:
+    files_created: "List of created files"
+  role: null
+  events: []
+
+implementation:
+  instructions: |
+    # Scaffold Command
+
+    Scaffold a new project structure based on the specified type.
+
+    ## Usage
+
+    `/scaffold <project-type> [options]`
+
+    ## Supported Project Types
+
+    - `python` - Python project with standard structure
+    - `typescript` - TypeScript project with tsconfig
+    - `react` - React application
+    - `api` - REST API with OpenAPI
+
+    ## Process
+
+    1. Determine project type from arguments
+    2. Create directory structure
+    3. Generate boilerplate files (README, config files, etc.)
+    4. Initialize git repository if not exists
+    5. Report created files to user
+
+    ## Example
+
+    ```
+    /scaffold python --name my-project --package-manager uv
+    ```
+  allowed_tools:
+    - Bash
+    - Write
+    - Edit
+
+settings: {}

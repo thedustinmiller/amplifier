@@ -1,0 +1,78 @@
+metadata:
+  name: session-logger
+  type: hook
+  version: 1.0.0
+  description: Logs session start/stop events for tracking
+  author: forge
+  tags: [logging, tracking]
+  license: MIT
+
+dependencies:
+  principles: []
+  tools: []
+  agents: []
+  templates: []
+  suggests: []
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs: {}
+  outputs: {}
+  role: null
+  events:
+    - SessionStart
+    - Stop
+
+implementation:
+  script: |
+    #!/usr/bin/env python3
+    """Session logger hook for Forge."""
+
+    import json
+    import sys
+    from datetime import datetime
+    from pathlib import Path
+
+
+    def log_event(event_type: str, data: dict) -> None:
+        """Log event to file."""
+        log_dir = Path(".forge/logs")
+        log_dir.mkdir(parents=True, exist_ok=True)
+
+        log_file = log_dir / "sessions.jsonl"
+
+        entry = {
+            "timestamp": datetime.utcnow().isoformat(),
+            "event": event_type,
+            "data": data
+        }
+
+        with open(log_file, "a") as f:
+            f.write(json.dumps(entry) + "\n")
+
+
+    def main():
+        """Main entry point."""
+        try:
+            stdin_data = sys.stdin.read() if not sys.stdin.isatty() else "{}"
+            hook_data = json.loads(stdin_data) if stdin_data else {}
+
+            event_type = hook_data.get("event", "unknown")
+            log_event(event_type, hook_data)
+
+        except Exception as e:
+            print(f"Hook error: {str(e)}", file=sys.stderr)
+
+
+    if __name__ == "__main__":
+        main()
+  script_type: py
+  matcher: "*"
+  timeout: 3000
+
+settings: {}

@@ -1,0 +1,48 @@
+metadata:
+  name: code-reviewer
+  type: agent
+  version: 1.0.0
+  description: Reviews code for quality, security, and best practices
+  author: forge
+  tags: [code-quality, security, review]
+  license: MIT
+
+dependencies:
+  principles:
+    - ruthless-minimalism
+  tools: []
+  agents: []
+  templates: []
+  suggests: []
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    code: "Code to review"
+    context: "Context about the code"
+  outputs:
+    review: "Code review with suggestions"
+    score: "Quality score (1-10)"
+  role: code_reviewer
+  events: []
+
+implementation:
+  model: inherit
+  prompt: |
+    You are an expert code reviewer focused on quality, security, and maintainability.
+
+    When reviewing code:
+    1. Check for security vulnerabilities
+    2. Assess code quality and readability
+    3. Identify potential bugs or edge cases
+    4. Suggest improvements for maintainability
+    5. Ensure adherence to best practices
+
+    Provide constructive, actionable feedback.
+
+settings: {}
