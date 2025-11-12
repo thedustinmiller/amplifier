@@ -1,5 +1,5 @@
 """
-Generate AI platform files from Forge composition.
+Validate AI platform files against Forge composition.
 """
 
 import asyncio
@@ -28,17 +28,15 @@ def print_warning(msg: str) -> None:
     print(f"⚠ {msg}")
 
 
-async def generate_command(
+async def validate_command(
     provider_name: str = "claude-code",
     project_dir: Optional[Path] = None,
-    force: bool = False,
 ) -> int:
-    """Generate AI platform files from composition.
+    """Validate AI platform files against composition.
 
     Args:
         provider_name: Provider to use (default: claude-code)
         project_dir: Project directory (default: current directory)
-        force: Overwrite existing files
 
     Returns:
         Exit code (0 = success, 1 = error)
@@ -77,64 +75,57 @@ async def generate_command(
         composition_loader = CompositionLoader(element_loader)
         loaded = composition_loader.load(composition_file)
 
-        print(f"▶ Loaded composition: {loaded.composition.name}")
-        print(f"  • {len(loaded.get_principles())} principles")
-        print(f"  • {len(loaded.get_agents())} agents")
-        print(f"  • {len(loaded.get_tools())} tools")
-        print(f"  • {len(loaded.get_hooks())} hooks")
-        print()
+        print(f"▶ Validating {provider_name} files...")
+        result = await provider.validate(loaded, project_dir)
 
-        print(f"▶ Generating {provider_name} files...")
-        result = await provider.generate(loaded, project_dir, force=force)
+        if result.valid:
+            print()
+            print_success("Validation passed!")
 
-        if not result.success:
-            print_error("Generation failed!")
-            for error in result.errors:
-                print_error(f"  {error}")
+            if result.warnings:
+                print()
+                for warning in result.warnings:
+                    print_warning(warning)
+
+            return 0
+        else:
+            print()
+            print_error("Validation failed!")
+
+            if result.errors:
+                print()
+                print("Errors:")
+                for error in result.errors:
+                    print_error(f"  {error}")
+
+            if result.warnings:
+                print()
+                print("Warnings:")
+                for warning in result.warnings:
+                    print_warning(f"  {warning}")
+
+            if result.suggestions:
+                print()
+                print("Suggestions:")
+                for suggestion in result.suggestions:
+                    print(f"  💡 {suggestion}")
+
             return 1
 
-        print()
-        print_success("Generation complete!")
-        print()
-
-        if result.files_created:
-            print(f"📝 Created {len(result.files_created)} files:")
-            for file in result.files_created:
-                rel_path = file.relative_to(project_dir)
-                print(f"  • {rel_path}")
-
-        if result.files_updated:
-            print()
-            print(f"🔄 Updated {len(result.files_updated)} files:")
-            for file in result.files_updated:
-                rel_path = file.relative_to(project_dir)
-                print(f"  • {rel_path}")
-
-        if result.warnings:
-            print()
-            for warning in result.warnings:
-                print_warning(warning)
-
-        print()
-        print("🎉 Done! Your AI platform files are ready.")
-
-        return 0
-
     except Exception as e:
-        print_error(f"Generation failed: {str(e)}")
+        print_error(f"Validation failed: {str(e)}")
         import traceback
-
         traceback.print_exc()
         return 1
 
 
 def main() -> None:
-    """CLI entry point for generate command."""
+    """CLI entry point for validate command."""
     import argparse
 
     parser = argparse.ArgumentParser(
-        prog="forge generate",
-        description="Generate AI platform files from Forge composition"
+        prog="forge validate",
+        description="Validate AI platform files against Forge composition"
     )
     parser.add_argument(
         "provider",
@@ -148,16 +139,11 @@ def main() -> None:
         type=Path,
         help="Project directory (default: current directory)",
     )
-    parser.add_argument(
-        "--force", "-f", action="store_true", help="Overwrite existing files"
-    )
 
     args = parser.parse_args(sys.argv[2:])
 
     exit_code = asyncio.run(
-        generate_command(
-            provider_name=args.provider, project_dir=args.project_dir, force=args.force
-        )
+        validate_command(provider_name=args.provider, project_dir=args.project_dir)
     )
 
     sys.exit(exit_code)

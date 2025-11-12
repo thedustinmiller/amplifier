@@ -455,13 +455,23 @@ def main():
 {Colors.BOLD}Forge CLI{Colors.RESET} - A Composable AI Development System
 
 {Colors.CYAN}Usage:{Colors.RESET}
-  forge init      Initialize a new Forge project (interactive wizard)
-  forge add       Add elements to current project
-  forge version   Show version information
+  forge init              Initialize a new Forge project (interactive wizard)
+  forge add               Add elements to current project
+  forge generate [PROVIDER] Generate AI platform files from composition
+  forge validate [PROVIDER] Validate platform files against composition
+  forge update [PROVIDER]   Update platform files when composition changes
+  forge clean [PROVIDER]    Remove generated platform files
+  forge version           Show version information
 
 {Colors.CYAN}Examples:{Colors.RESET}
-  forge init                # Start the interactive wizard
-  forge add                 # Add elements to project
+  forge init                      # Start the interactive wizard
+  forge add                       # Add elements to project
+  forge generate claude-code      # Generate .claude/ directory
+  forge generate claude-code -f   # Force overwrite existing files
+  forge validate claude-code      # Check if .claude/ matches composition
+
+{Colors.CYAN}Available Providers:{Colors.RESET}
+  claude-code    Claude Code integration (.claude/ directory)
 
 {Colors.CYAN}Learn more:{Colors.RESET}
   https://github.com/yourorg/forge
@@ -474,6 +484,18 @@ def main():
         asyncio.run(wizard_init())
     elif command == "add":
         asyncio.run(wizard_add())
+    elif command == "generate":
+        from forge.cli.generate import main as generate_main
+        generate_main()
+    elif command == "validate":
+        from forge.cli.validate import main as validate_main
+        validate_main()
+    elif command == "update":
+        from forge.cli.update import main as update_main
+        update_main()
+    elif command == "clean":
+        from forge.cli.clean import main as clean_main
+        clean_main()
     elif command == "version":
         print(f"{Colors.BOLD}Forge{Colors.RESET} version {Colors.GREEN}0.1.0{Colors.RESET}")
     else:

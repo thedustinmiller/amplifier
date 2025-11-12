@@ -1,5 +1,5 @@
 """
-Generate AI platform files from Forge composition.
+Clean (remove) generated AI platform files.
 """
 
 import asyncio
@@ -7,8 +7,6 @@ from pathlib import Path
 from typing import Optional
 import sys
 
-from forge.core.element import ElementLoader
-from forge.core.composition import CompositionLoader
 from forge.providers.protocol import ProviderRegistry
 from forge.providers.claude_code import ClaudeCodeProvider
 
@@ -28,17 +26,27 @@ def print_warning(msg: str) -> None:
     print(f"⚠ {msg}")
 
 
-async def generate_command(
+def get_confirmation(provider_name: str, project_dir: Path) -> bool:
+    """Get user confirmation for clean operation."""
+    print(f"⚠️  WARNING: This will remove all {provider_name} files from:")
+    print(f"   {project_dir}")
+    print()
+
+    response = input("Are you sure? Type 'yes' to confirm: ").strip().lower()
+    return response == "yes"
+
+
+async def clean_command(
     provider_name: str = "claude-code",
     project_dir: Optional[Path] = None,
     force: bool = False,
 ) -> int:
-    """Generate AI platform files from composition.
+    """Remove generated AI platform files.
 
     Args:
         provider_name: Provider to use (default: claude-code)
         project_dir: Project directory (default: current directory)
-        force: Overwrite existing files
+        force: Skip confirmation prompt
 
     Returns:
         Exit code (0 = success, 1 = error)
@@ -46,16 +54,13 @@ async def generate_command(
     if project_dir is None:
         project_dir = Path.cwd()
 
-    composition_file = project_dir / ".forge" / "composition.yaml"
-
-    if not composition_file.exists():
-        print_error(f"Composition not found: {composition_file}")
-        print_error("Run 'forge init' to create a new project first.")
-        return 1
-
     print(f"📁 Project: {project_dir}")
     print(f"🔨 Provider: {provider_name}")
     print()
+
+    if not force and not get_confirmation(provider_name, project_dir):
+        print("Aborted.")
+        return 0
 
     registry = ProviderRegistry()
     registry.register(ClaudeCodeProvider())
@@ -67,48 +72,27 @@ async def generate_command(
         return 1
 
     try:
-        element_loader = ElementLoader(
-            search_paths=[
-                project_dir / ".forge" / "elements",
-                Path(__file__).parent.parent.parent.parent / "elements",
-            ]
-        )
-
-        composition_loader = CompositionLoader(element_loader)
-        loaded = composition_loader.load(composition_file)
-
-        print(f"▶ Loaded composition: {loaded.composition.name}")
-        print(f"  • {len(loaded.get_principles())} principles")
-        print(f"  • {len(loaded.get_agents())} agents")
-        print(f"  • {len(loaded.get_tools())} tools")
-        print(f"  • {len(loaded.get_hooks())} hooks")
-        print()
-
-        print(f"▶ Generating {provider_name} files...")
-        result = await provider.generate(loaded, project_dir, force=force)
+        print(f"▶ Cleaning {provider_name} files...")
+        result = await provider.clean(project_dir)
 
         if not result.success:
-            print_error("Generation failed!")
+            print_error("Clean failed!")
             for error in result.errors:
                 print_error(f"  {error}")
             return 1
 
         print()
-        print_success("Generation complete!")
+        print_success("Clean complete!")
         print()
 
-        if result.files_created:
-            print(f"📝 Created {len(result.files_created)} files:")
-            for file in result.files_created:
-                rel_path = file.relative_to(project_dir)
+        if result.files_updated:
+            print(f"🗑️  Removed {len(result.files_updated)} files:")
+            for file in result.files_updated[:10]:
+                rel_path = file.relative_to(project_dir) if file.is_relative_to(project_dir) else file
                 print(f"  • {rel_path}")
 
-        if result.files_updated:
-            print()
-            print(f"🔄 Updated {len(result.files_updated)} files:")
-            for file in result.files_updated:
-                rel_path = file.relative_to(project_dir)
-                print(f"  • {rel_path}")
+            if len(result.files_updated) > 10:
+                print(f"  ... and {len(result.files_updated) - 10} more")
 
         if result.warnings:
             print()
@@ -116,25 +100,24 @@ async def generate_command(
                 print_warning(warning)
 
         print()
-        print("🎉 Done! Your AI platform files are ready.")
+        print("🎉 Done! AI platform files have been removed.")
 
         return 0
 
     except Exception as e:
-        print_error(f"Generation failed: {str(e)}")
+        print_error(f"Clean failed: {str(e)}")
         import traceback
-
         traceback.print_exc()
         return 1
 
 
 def main() -> None:
-    """CLI entry point for generate command."""
+    """CLI entry point for clean command."""
     import argparse
 
     parser = argparse.ArgumentParser(
-        prog="forge generate",
-        description="Generate AI platform files from Forge composition"
+        prog="forge clean",
+        description="Remove generated AI platform files"
     )
     parser.add_argument(
         "provider",
@@ -149,14 +132,19 @@ def main() -> None:
         help="Project directory (default: current directory)",
     )
     parser.add_argument(
-        "--force", "-f", action="store_true", help="Overwrite existing files"
+        "--force",
+        "-f",
+        action="store_true",
+        help="Skip confirmation prompt",
     )
 
     args = parser.parse_args(sys.argv[2:])
 
     exit_code = asyncio.run(
-        generate_command(
-            provider_name=args.provider, project_dir=args.project_dir, force=args.force
+        clean_command(
+            provider_name=args.provider,
+            project_dir=args.project_dir,
+            force=args.force,
         )
     )
 

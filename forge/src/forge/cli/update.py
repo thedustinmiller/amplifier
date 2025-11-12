@@ -1,5 +1,5 @@
 """
-Generate AI platform files from Forge composition.
+Update AI platform files when composition changes.
 """
 
 import asyncio
@@ -28,17 +28,15 @@ def print_warning(msg: str) -> None:
     print(f"⚠ {msg}")
 
 
-async def generate_command(
+async def update_command(
     provider_name: str = "claude-code",
     project_dir: Optional[Path] = None,
-    force: bool = False,
 ) -> int:
-    """Generate AI platform files from composition.
+    """Update AI platform files when composition changes.
 
     Args:
         provider_name: Provider to use (default: claude-code)
         project_dir: Project directory (default: current directory)
-        force: Overwrite existing files
 
     Returns:
         Exit code (0 = success, 1 = error)
@@ -84,17 +82,17 @@ async def generate_command(
         print(f"  • {len(loaded.get_hooks())} hooks")
         print()
 
-        print(f"▶ Generating {provider_name} files...")
-        result = await provider.generate(loaded, project_dir, force=force)
+        print(f"▶ Updating {provider_name} files...")
+        result = await provider.update(loaded, project_dir)
 
         if not result.success:
-            print_error("Generation failed!")
+            print_error("Update failed!")
             for error in result.errors:
                 print_error(f"  {error}")
             return 1
 
         print()
-        print_success("Generation complete!")
+        print_success("Update complete!")
         print()
 
         if result.files_created:
@@ -116,25 +114,24 @@ async def generate_command(
                 print_warning(warning)
 
         print()
-        print("🎉 Done! Your AI platform files are ready.")
+        print("🎉 Done! Your AI platform files have been updated.")
 
         return 0
 
     except Exception as e:
-        print_error(f"Generation failed: {str(e)}")
+        print_error(f"Update failed: {str(e)}")
         import traceback
-
         traceback.print_exc()
         return 1
 
 
 def main() -> None:
-    """CLI entry point for generate command."""
+    """CLI entry point for update command."""
     import argparse
 
     parser = argparse.ArgumentParser(
-        prog="forge generate",
-        description="Generate AI platform files from Forge composition"
+        prog="forge update",
+        description="Update AI platform files when composition changes"
     )
     parser.add_argument(
         "provider",
@@ -148,16 +145,11 @@ def main() -> None:
         type=Path,
         help="Project directory (default: current directory)",
     )
-    parser.add_argument(
-        "--force", "-f", action="store_true", help="Overwrite existing files"
-    )
 
     args = parser.parse_args(sys.argv[2:])
 
     exit_code = asyncio.run(
-        generate_command(
-            provider_name=args.provider, project_dir=args.project_dir, force=args.force
-        )
+        update_command(provider_name=args.provider, project_dir=args.project_dir)
     )
 
     sys.exit(exit_code)
