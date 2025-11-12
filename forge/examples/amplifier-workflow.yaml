@@ -1,0 +1,74 @@
+composition:
+  name: amplifier-workflow
+  type: preset
+  version: 1.0.0
+  description: Core development workflow from amplifier with architecture, testing, and quality practices
+
+elements:
+  principles:
+    - ruthless-minimalism
+    - coevolution
+    - respect-user-time
+    - zero-bs-principle
+    - analysis-first
+
+  constitutions: []
+
+  agents:
+    - zen-architect
+    - modular-builder
+    - bug-hunter
+    - test-coverage
+    - security-guardian
+    - post-task-cleanup
+    - code-reviewer
+
+  tools:
+    - commit
+    - review-changes
+    - modular-build
+    - create-plan
+    - scaffold
+
+  hooks:
+    SessionStart: session-logger
+
+  queries: []
+
+settings:
+  memory:
+    provider: file
+    config:
+      base_path: .forge/memory
+
+  agent_orchestration:
+    mode: sequential
+    max_parallel: 3
+
+    agent_roles:
+      planning: zen-architect
+      implementation: modular-builder
+      testing: test-coverage
+      debugging: bug-hunter
+      security: security-guardian
+      cleanup: post-task-cleanup
+
+  tool_defaults:
+    commit:
+      verify_before_commit: true
+      conventional_commits: true
+    review-changes:
+      check_philosophy: true
+      run_tests: true
+
+metadata:
+  created_by: forge
+  purpose: Complete development workflow with amplifier practices
+  workflow_stages:
+    - Analysis (zen-architect)
+    - Planning (create-plan)
+    - Implementation (modular-builder + modular-build)
+    - Testing (test-coverage)
+    - Security Review (security-guardian)
+    - Commit (commit with verification)
+    - Cleanup (post-task-cleanup)

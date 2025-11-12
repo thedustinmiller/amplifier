@@ -1,0 +1,31 @@
+metadata:
+  name: zero-bs-principle
+  type: principle
+  version: 1.0.0
+  description: No stubs, placeholders, or unimplemented code - build working functionality only
+  author: amplifier
+  tags: [YAGNI, completeness, implementation]
+  license: MIT
+
+dependencies:
+  principles:
+    - ruthless-minimalism
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests: []
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs: {}
+  outputs: {}
+  role: null
+  events: []
+
+settings: {}

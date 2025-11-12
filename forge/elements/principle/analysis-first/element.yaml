@@ -1,0 +1,32 @@
+metadata:
+  name: analysis-first
+  type: principle
+  version: 1.0.0
+  description: For complex problems, always analyze before implementing
+  author: amplifier
+  tags: [planning, analysis, design]
+  license: MIT
+
+dependencies:
+  principles:
+    - ruthless-minimalism
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests:
+    - zen-architect
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs: {}
+  outputs: {}
+  role: null
+  events: []
+
+settings: {}

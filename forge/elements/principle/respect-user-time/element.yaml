@@ -1,0 +1,30 @@
+metadata:
+  name: respect-user-time
+  type: principle
+  version: 1.0.0
+  description: Never present work as ready without thorough self-testing and validation
+  author: amplifier
+  tags: [testing, quality, user-respect]
+  license: MIT
+
+dependencies:
+  principles: []
+  constitutions: []
+  tools: []
+  agents: []
+  templates: []
+  suggests: []
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs: {}
+  outputs: {}
+  role: null
+  events: []
+
+settings: {}
