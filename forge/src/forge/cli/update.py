@@ -65,12 +65,8 @@ async def update_command(
         return 1
 
     try:
-        element_loader = ElementLoader(
-            search_paths=[
-                project_dir / ".forge" / "elements",
-                Path(__file__).parent.parent.parent.parent / "elements",
-            ]
-        )
+        from forge.utils import get_element_search_paths
+        element_loader = ElementLoader(search_paths=get_element_search_paths(project_dir))
 
         composition_loader = CompositionLoader(element_loader)
         loaded = composition_loader.load(composition_file)

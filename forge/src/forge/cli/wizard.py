@@ -159,8 +159,8 @@ Let's get started!
     # Load available elements
     print_section("Loading Available Elements")
 
-    forge_root = Path(__file__).parent.parent.parent
-    element_loader = ElementLoader(search_paths=[forge_root / "elements"])
+    from forge.utils import get_element_search_paths
+    element_loader = ElementLoader(search_paths=get_element_search_paths(project_path))
 
     try:
         available_principles = element_loader.list_elements(ElementType.PRINCIPLE)
@@ -385,8 +385,8 @@ async def wizard_add():
     print_success(f"Loaded composition: {composition.name}")
 
     # Load available elements
-    forge_root = Path(__file__).parent.parent.parent
-    element_loader = ElementLoader(search_paths=[forge_root / "elements"])
+    from forge.utils import get_element_search_paths
+    element_loader = ElementLoader(search_paths=get_element_search_paths(Path.cwd()))
 
     print_section("What would you like to add?")
 

@@ -1,0 +1,4 @@
+include elements/**/*
+include elements/**/*.yaml
+include elements/**/*.md
+recursive-include elements *
