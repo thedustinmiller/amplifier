@@ -1,0 +1,7 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  2.8  0.0  46040 13372 ?        Ssl  22:29   0:00 /process_api --addr 0.0.0.0:2024 --max-ws-buffer-size 32768 --cpu-shares 4096 --oom-polling-period-ms 100 --memory-limit-bytes 8589934592
+root        19  0.0  0.0  10868  4340 ?        S    22:29   0:00 /bin/sh -c mkdir -p /home/user ; cd /home/user && /usr/local/bin/environment-manager task-run --stdin --session session_019AbtVVtPRKXvRtM8W9LRow --session-mode resume --upgrade-claude-code=False >>/tmp/environment-manager.out 2>&1
+root        21  0.8  0.4 1918240 56796 ?       Sl   22:29   0:00 /usr/local/bin/environment-manager task-run --stdin --session session_019AbtVVtPRKXvRtM8W9LRow --session-mode resume --upgrade-claude-code=False
+root        33 11.3  2.2 22431036 304576 ?     Sl   22:29   0:03 claude
+root       531 16.5  0.0  16840 10620 ?        Ss   22:30   0:00 /bin/bash -c -l source /root/.claude/shell-snapshots/snapshot-bash-1763159382555-27iyji.sh && eval 'ps aux > docs/process-list.txt' \< /dev/null && pwd -P >| /tmp/claude-ebfa-cwd
+root       933 50.0  0.0  15956  8592 ?        R    22:30   0:00 ps aux
