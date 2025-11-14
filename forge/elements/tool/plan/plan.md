@@ -8,6 +8,18 @@ agent_scripts:
   ps: scripts/powershell/update-agent-context.ps1 -AgentType __AGENT__
 ---
 
+## Purpose: For AI/Agent Use
+
+This is a **tool** element designed for AI/agent invocation during autonomous reasoning and execution. It is not intended for direct user invocation.
+
+**Key distinction:**
+- **Tools** (this element): Invoked by AI agents internally during their reasoning process
+- **Commands**: User-facing slash commands or CLI commands for direct invocation
+
+If you're a user looking to interact with this functionality, there may be a corresponding command element available. Tools are building blocks that agents use to accomplish tasks.
+
+---
+
 ## User Input
 
 ```text

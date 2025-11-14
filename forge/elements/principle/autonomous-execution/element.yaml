@@ -1,0 +1,34 @@
+element:
+  name: autonomous-execution
+  type: principle
+  version: 1.0.0
+  description: Agent makes decisions and acts independently without requiring user intervention
+
+dependencies:
+  principles: []
+
+suggests:
+  principles:
+    - respect-user-time
+
+conflicts:
+  principles:
+    - user-confirmation
+
+interface:
+  provides:
+    - independent_decision_making
+    - batch_execution
+    - unattended_operation
+
+metadata:
+  author: core
+  tags:
+    - autonomy
+    - automation
+    - efficiency
+    - independence
+  license: MIT
+  updated: 2025-11-14
+
+content: autonomous-execution.md

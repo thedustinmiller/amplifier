@@ -20,6 +20,7 @@ class ElementType(Enum):
     AGENT = "agent"
     TEMPLATE = "template"
     HOOK = "hook"
+    COMMAND = "command"
     QUERY = "query"
     WORKFLOW = "workflow"
     PRESET = "preset"

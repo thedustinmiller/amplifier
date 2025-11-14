@@ -2,7 +2,7 @@
 
 This catalog describes all available elements in Forge, organized by type.
 
-## Principles (6)
+## Principles (21)
 
 ### ruthless-minimalism
 **Ship the simplest thing that could possibly work, then adapt based on real needs**
@@ -71,6 +71,196 @@ This catalog describes all available elements in Forge, organized by type.
 **Dependencies**: None
 **Suggests**: spec-template, plan-template, tasks-template
 **Source**: spec-kit SDD philosophy
+
+### autonomous-execution
+**Agent makes decisions and acts independently without requiring user intervention**
+
+- Independent decision making
+- Batch execution mode
+- Unattended operation
+- Reduces user intervention overhead
+
+**Dependencies**: None
+**Suggests**: respect-user-time
+**Conflicts**: user-confirmation
+**Source**: Core Forge principles
+
+### code-as-documentation
+**Write self-documenting code; the code itself is the most reliable documentation**
+
+- Self-documenting code patterns
+- Refactoring for clarity
+- Minimal external documentation
+- Code clarity guidelines
+
+**Dependencies**: None
+**Suggests**: ruthless-minimalism
+**Conflicts**: comprehensive-documentation
+**Source**: Core Forge principles
+
+### comprehensive-documentation
+**Document intent, context, and decisions separately from code for long-term maintainability**
+
+- Documentation standards
+- Knowledge preservation
+- Onboarding resources
+- Separate docs from code
+
+**Dependencies**: None
+**Suggests**: spec-driven, constitution-backed-design
+**Conflicts**: code-as-documentation
+**Source**: Core Forge principles
+
+### conservative-approach
+**Favor proven, boring, reliable solutions over cutting-edge experimentation**
+
+- Stability mindset
+- Proven solutions focus
+- Risk mitigation through boring tech
+- Reliability over innovation
+
+**Dependencies**: None
+**Suggests**: ruthless-minimalism
+**Conflicts**: experimental-features
+**Source**: Core Forge principles
+
+### constitution-backed-design
+**Design and development governed by immutable, numbered rules like constitutional articles**
+
+- Immutable rule framework
+- Violation detection
+- Governance structure
+- Constraint clarity
+
+**Dependencies**: None
+**Suggests**: spec-driven, ruthless-minimalism
+**Conflicts**: emergent-design, coevolution
+**Source**: Core Forge principles
+
+### decoupled-components
+**Build independent, composable components that can evolve and scale separately**
+
+- Decoupling mindset
+- Modularity patterns
+- Component guidelines
+- Microservices-friendly
+
+**Dependencies**: None
+**Conflicts**: integrated-solutions
+**Source**: Core Forge principles
+
+### deep-analysis
+**Understand deeply before building to prevent costly mistakes**
+
+- Thorough investigation
+- Risk assessment
+- Comprehensive planning
+- Mistake prevention
+
+**Dependencies**: None
+**Suggests**: spec-driven
+**Conflicts**: fast-iteration, ruthless-minimalism
+**Source**: Core Forge principles
+
+### detailed-explanation
+**Explain reasoning, show work, and educate the user through comprehensive output**
+
+- Reasoning transparency
+- Educational guidance
+- Debugging context
+- Decision rationale
+
+**Dependencies**: None
+**Conflicts**: minimal-output
+**Source**: Core Forge principles
+
+### experimental-features
+**Embrace cutting-edge tools, techniques, and patterns to drive innovation**
+
+- Innovation mindset
+- Technology adoption
+- Experimentation guidelines
+- Risk tolerance
+
+**Dependencies**: None
+**Conflicts**: conservative-approach
+**Source**: Core Forge principles
+
+### fast-iteration
+**Ship quickly, learn from real feedback, iterate rapidly**
+
+- Rapid prototyping
+- Quick feedback loops
+- Iteration speed
+- Learn from real usage
+
+**Dependencies**: None
+**Suggests**: ruthless-minimalism, emergent-design
+**Conflicts**: deep-analysis
+**Source**: Core Forge principles
+
+### focused-refinement
+**Commit to an approach early, optimize and polish it to excellence**
+
+- Convergent optimization
+- Commitment discipline
+- Quality focus
+- Refinement depth
+
+**Dependencies**: None
+**Suggests**: spec-driven, constitution-backed-design
+**Conflicts**: wide-search
+**Source**: Core Forge principles
+
+### integrated-solutions
+**Build tightly integrated, cohesive systems that work together seamlessly**
+
+- Integration mindset
+- Cohesion patterns
+- Monolithic guidelines
+- Batteries-included approach
+
+**Dependencies**: None
+**Conflicts**: decoupled-components
+**Source**: Core Forge principles
+
+### minimal-output
+**Show only essential information, reduce noise, and maximize signal-to-noise ratio**
+
+- Concise communication
+- Noise reduction
+- Focus optimization
+- Efficient output
+
+**Dependencies**: None
+**Suggests**: ruthless-minimalism
+**Conflicts**: detailed-explanation
+**Source**: Core Forge principles
+
+### user-confirmation
+**Request user approval before taking significant actions**
+
+- Approval workflow
+- Transparency
+- User control
+- Safety gates
+
+**Dependencies**: None
+**Conflicts**: autonomous-execution
+**Source**: Core Forge principles
+
+### wide-search
+**Explore many approaches, defer commitment, and discover options before converging**
+
+- Divergent exploration
+- Option discovery
+- Approach diversity
+- Delayed commitment
+
+**Dependencies**: None
+**Suggests**: emergent-design, coevolution
+**Conflicts**: focused-refinement
+**Source**: Core Forge principles
 
 ## Agents (7)
 
@@ -358,6 +548,25 @@ Supports multiple project types:
 **Dependencies**: None
 **Source**: Original Forge example
 
+## Commands (1)
+
+### ultrathink-task
+**Comprehensive analyze → plan → implement → review pipeline**
+
+End-to-end orchestration command that coordinates multiple agents and tools:
+- **Analyze**: zen-architect analyzes problem and designs architecture
+- **Plan**: create-plan generates implementation plan from architectural direction
+- **Implement**: modular-builder builds solution following plan
+- **Review**: review-changes validates quality and philosophy alignment
+
+Sequential pipeline with validation gates between phases. Supports three complexity levels (simple, moderate, complex). Combines analysis-first principle with ruthless-minimalism and respect-user-time.
+
+**Dependencies**: analysis-first, ruthless-minimalism, respect-user-time
+**Requires**: zen-architect, modular-builder, create-plan, review-changes, plan-template
+**Suggests**: bug-hunter, post-task-cleanup
+**Category**: orchestration
+**Source**: amplifier workflow orchestration
+
 ## Composition Examples
 
 ### example-workflow (original)
@@ -467,14 +676,16 @@ settings:
 
 ## Element Statistics
 
-- **Total Elements**: 26
-  - Principles: 6
+- **Total Elements**: 42
+  - Principles: 21
   - Agents: 7
   - Templates: 4
   - Tools: 8
+  - Commands: 1
   - Hooks: 1
 
 - **Source Distribution**:
+  - Core Forge: 16 elements (15 new principles, 1 command)
   - amplifier: 13 elements (6 agents, 4 tools, 3 principles)
   - spec-kit: 8 elements (4 templates, 3 tools, 1 principle)
   - Original Forge: 5 elements (1 agent, 1 tool, 2 principles, 1 hook)
@@ -483,9 +694,14 @@ settings:
   - Core Development: zen-architect, modular-builder, code-reviewer
   - Quality Assurance: test-coverage, security-guardian, bug-hunter
   - Workflow Management: commit, review-changes, modular-build, create-plan, specify, plan, tasks
+  - Orchestration: ultrathink-task
   - Templates & Structure: spec-template, plan-template, tasks-template, checklist-template
   - Project Setup: scaffold, session-logger
   - Philosophy: ruthless-minimalism, coevolution, respect-user-time, zero-bs-principle, analysis-first, spec-driven
+  - Design Patterns: constitution-backed-design, emergent-design, integrated-solutions, decoupled-components
+  - Development Approach: fast-iteration, deep-analysis, wide-search, focused-refinement, experimental-features, conservative-approach
+  - Execution Style: autonomous-execution, user-confirmation, detailed-explanation, minimal-output
+  - Documentation: comprehensive-documentation, code-as-documentation
 
 ## Next Steps
 

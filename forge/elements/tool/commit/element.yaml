@@ -29,8 +29,15 @@ interface:
   role: null
   events: []
 implementation:
-  instructions: "# Claude Command: Commit\n\nThis command helps you create well-formatted\
-    \ commits with conventional commit messages.\n\n## Usage\n\nTo create a commit,\
+  instructions: "# Claude Command: Commit\n\n## Purpose: For AI/Agent Use\n\nThis\
+    \ is a **tool** element designed for AI/agent invocation during autonomous reasoning\
+    \ and execution. It is not intended for direct user invocation.\n\n**Key distinction:**\n\
+    - **Tools** (this element): Invoked by AI agents internally during their reasoning\
+    \ process\n- **Commands**: User-facing slash commands or CLI commands for direct\
+    \ invocation\n\nIf you're a user looking to interact with this functionality,\
+    \ there may be a corresponding command element available. Tools are building blocks\
+    \ that agents use to accomplish tasks.\n\n---\n\nThis command helps you create\
+    \ well-formatted commits with conventional commit messages.\n\n## Usage\n\nTo create a commit,\
     \ just type:\n\n```\n/commit\n```\n\nOr with options:\n\n```\n/commit --no-verify\n\
     ```\n\n## What This Command Does\n\n1. Unless specified with `--no-verify`, automatically\
     \ runs pre-commit checks:\n   - Detect package manager (npm, pnpm, yarn, bun)\

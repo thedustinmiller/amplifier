@@ -29,7 +29,14 @@ interface:
   role: null
   events: []
 implementation:
-  instructions: "# /modular-build\n\n**Purpose:** One command to go from a natural\u2011\
+  instructions: "# /modular-build\n\n## Purpose: For AI/Agent Use\n\nThis is a **tool**\
+    \ element designed for AI/agent invocation during autonomous reasoning and execution.\
+    \ It is not intended for direct user invocation.\n\n**Key distinction:**\n- **Tools**\
+    \ (this element): Invoked by AI agents internally during their reasoning process\n\
+    - **Commands**: User-facing slash commands or CLI commands for direct invocation\n\
+    \nIf you're a user looking to interact with this functionality, there may be a\
+    \ corresponding command element available. Tools are building blocks that agents\
+    \ use to accomplish tasks.\n\n---\n\n**Purpose:** One command to go from a natural\u2011\
     language **ask** \u2192 **Contract & Spec** \u2192 **Plan** \u2192 **Generate**\
     \ \u2192 **Review**.\nIt does not call other commands; it drives sub\u2011agents\
     \ and micro\u2011tools directly. It force\u2011loads the authoring guide.\n\n\

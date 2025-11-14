@@ -1,0 +1,33 @@
+element:
+  name: integrated-solutions
+  type: principle
+  version: 1.0.0
+  description: Build tightly integrated, cohesive systems that work together seamlessly
+
+dependencies:
+  principles: []
+
+suggests:
+  principles: []
+
+conflicts:
+  principles:
+    - decoupled-components
+
+interface:
+  provides:
+    - integration_mindset
+    - cohesion_patterns
+    - monolithic_guidelines
+
+metadata:
+  author: core
+  tags:
+    - integration
+    - cohesion
+    - monolith
+    - batteries-included
+  license: MIT
+  updated: 2025-11-14
+
+content: integrated-solutions.md

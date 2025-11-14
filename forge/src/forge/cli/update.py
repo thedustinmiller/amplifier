@@ -75,6 +75,7 @@ async def update_command(
         print(f"  • {len(loaded.get_principles())} principles")
         print(f"  • {len(loaded.get_agents())} agents")
         print(f"  • {len(loaded.get_tools())} tools")
+        print(f"  • {len(loaded.get_commands())} commands")
         print(f"  • {len(loaded.get_hooks())} hooks")
         print()
 

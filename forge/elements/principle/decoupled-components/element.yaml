@@ -1,0 +1,33 @@
+element:
+  name: decoupled-components
+  type: principle
+  version: 1.0.0
+  description: Build independent, composable components that can evolve and scale separately
+
+dependencies:
+  principles: []
+
+suggests:
+  principles: []
+
+conflicts:
+  principles:
+    - integrated-solutions
+
+interface:
+  provides:
+    - decoupling_mindset
+    - modularity_patterns
+    - component_guidelines
+
+metadata:
+  author: core
+  tags:
+    - decoupling
+    - modularity
+    - microservices
+    - composability
+  license: MIT
+  updated: 2025-11-14
+
+content: decoupled-components.md

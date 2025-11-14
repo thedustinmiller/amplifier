@@ -1,0 +1,33 @@
+element:
+  name: user-confirmation
+  type: principle
+  version: 1.0.0
+  description: Request user approval before taking significant actions
+
+dependencies:
+  principles: []
+
+suggests:
+  principles: []
+
+conflicts:
+  principles:
+    - autonomous-execution
+
+interface:
+  provides:
+    - approval_workflow
+    - transparency
+    - user_control
+
+metadata:
+  author: core
+  tags:
+    - control
+    - transparency
+    - approval
+    - safety
+  license: MIT
+  updated: 2025-11-14
+
+content: user-confirmation.md

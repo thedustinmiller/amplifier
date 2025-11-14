@@ -1,0 +1,33 @@
+element:
+  name: experimental-features
+  type: principle
+  version: 1.0.0
+  description: Embrace cutting-edge tools, techniques, and patterns to drive innovation
+
+dependencies:
+  principles: []
+
+suggests:
+  principles: []
+
+conflicts:
+  principles:
+    - conservative-approach
+
+interface:
+  provides:
+    - innovation_mindset
+    - technology_adoption
+    - experimentation_guidelines
+
+metadata:
+  author: core
+  tags:
+    - innovation
+    - experimentation
+    - cutting-edge
+    - risk-tolerance
+  license: MIT
+  updated: 2025-11-14
+
+content: experimental-features.md

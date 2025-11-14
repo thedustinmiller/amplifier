@@ -1,0 +1,35 @@
+element:
+  name: comprehensive-documentation
+  type: principle
+  version: 1.0.0
+  description: Document intent, context, and decisions separately from code for long-term maintainability
+
+dependencies:
+  principles: []
+
+suggests:
+  principles:
+    - spec-driven
+    - constitution-backed-design
+
+conflicts:
+  principles:
+    - code-as-documentation
+
+interface:
+  provides:
+    - documentation_standards
+    - knowledge_preservation
+    - onboarding_resources
+
+metadata:
+  author: core
+  tags:
+    - documentation
+    - knowledge-transfer
+    - onboarding
+    - maintenance
+  license: MIT
+  updated: 2025-11-14
+
+content: comprehensive-documentation.md

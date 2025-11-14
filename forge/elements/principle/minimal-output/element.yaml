@@ -1,0 +1,36 @@
+element:
+  name: minimal-output
+  type: principle
+  version: 1.0.0
+  description: Show only essential information, reduce noise, and maximize signal-to-noise ratio
+
+dependencies:
+  principles: []
+
+suggests:
+  principles:
+    - ruthless-minimalism
+
+conflicts:
+  principles:
+    - detailed-explanation
+  # Note: These principles represent opposite ends of the Verbosity vs Concision axis
+
+interface:
+  provides:
+    - concise_communication
+    - noise_reduction
+    - focus_optimization
+    - efficient_output
+
+metadata:
+  author: core
+  tags:
+    - concision
+    - efficiency
+    - focus
+    - speed
+  license: MIT
+  updated: 2025-11-14
+
+content: minimal-output.md

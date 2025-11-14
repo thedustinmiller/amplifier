@@ -1,0 +1,34 @@
+element:
+  name: conservative-approach
+  type: principle
+  version: 1.0.0
+  description: Favor proven, boring, reliable solutions over cutting-edge experimentation
+
+dependencies:
+  principles: []
+
+suggests:
+  principles:
+    - ruthless-minimalism
+
+conflicts:
+  principles:
+    - experimental-features
+
+interface:
+  provides:
+    - stability_mindset
+    - proven_solutions
+    - risk_mitigation
+
+metadata:
+  author: core
+  tags:
+    - stability
+    - reliability
+    - boring-tech
+    - risk-aversion
+  license: MIT
+  updated: 2025-11-14
+
+content: conservative-approach.md

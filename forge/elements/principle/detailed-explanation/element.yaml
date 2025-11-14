@@ -1,0 +1,35 @@
+element:
+  name: detailed-explanation
+  type: principle
+  version: 1.0.0
+  description: Explain reasoning, show work, and educate the user through comprehensive output
+
+dependencies:
+  principles: []
+
+suggests:
+  principles: []
+
+conflicts:
+  principles:
+    - minimal-output
+  # Note: These principles represent opposite ends of the Verbosity vs Concision axis
+
+interface:
+  provides:
+    - reasoning_transparency
+    - educational_guidance
+    - debugging_context
+    - decision_rationale
+
+metadata:
+  author: core
+  tags:
+    - verbosity
+    - transparency
+    - learning
+    - collaboration
+  license: MIT
+  updated: 2025-11-14
+
+content: detailed-explanation.md

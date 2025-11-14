@@ -1,0 +1,37 @@
+element:
+  name: focused-refinement
+  type: principle
+  version: 1.0.0
+  description: Commit to an approach early, optimize and polish it to excellence
+
+dependencies:
+  principles: []
+
+suggests:
+  principles:
+    - spec-driven
+    - constitution-backed-design
+
+conflicts:
+  principles:
+    - wide-search
+  # Note: These principles represent opposite ends of the Exploration vs Exploitation axis
+
+interface:
+  provides:
+    - convergent_optimization
+    - commitment_discipline
+    - quality_focus
+    - refinement_depth
+
+metadata:
+  author: core
+  tags:
+    - exploitation
+    - refinement
+    - quality
+    - optimization
+  license: MIT
+  updated: 2025-11-14
+
+content: focused-refinement.md

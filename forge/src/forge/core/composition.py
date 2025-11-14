@@ -22,6 +22,7 @@ class CompositionElements:
     agents: List[str] = field(default_factory=list)
     templates: List[str] = field(default_factory=list)
     hooks: Dict[str, str] = field(default_factory=dict)  # event -> hook name
+    commands: List[str] = field(default_factory=list)
     queries: List[str] = field(default_factory=list)
 
 
@@ -65,6 +66,7 @@ class Composition:
                 "agents": self.elements.agents,
                 "templates": self.elements.templates,
                 "hooks": self.elements.hooks,
+                "commands": self.elements.commands,
                 "queries": self.elements.queries,
             },
             "settings": {
@@ -89,6 +91,7 @@ class Composition:
             agents=elements_data.get("agents", []),
             templates=elements_data.get("templates", []),
             hooks=elements_data.get("hooks", {}),
+            commands=elements_data.get("commands", []),
             queries=elements_data.get("queries", []),
         )
 
@@ -146,6 +149,9 @@ class Composition:
 
         for hook in self.elements.hooks.values():
             result.append((ElementType.HOOK, hook))
+
+        for command in self.elements.commands:
+            result.append((ElementType.COMMAND, command))
 
         for query in self.elements.queries:
             result.append((ElementType.QUERY, query))
@@ -337,3 +343,7 @@ class LoadedComposition:
             if hook:
                 hooks[event] = hook
         return hooks
+
+    def get_commands(self) -> List[Element]:
+        """Get all commands."""
+        return self.get_elements_by_type(ElementType.COMMAND)

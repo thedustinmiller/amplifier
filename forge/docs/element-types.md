@@ -8,10 +8,10 @@ Elements are the atomic building blocks of Forge. Each type serves a specific pu
 ┌─────────────────────────────────────────────┐
 │ FOUNDATIONS (Layer 1: Why)                  │
 │ - Principles: Core values and constraints   │
-│ - Constitutions: Immutable governance rules │
 ├─────────────────────────────────────────────┤
 │ ELEMENTS (Layer 2: What)                    │
-│ - Tools: Executable capabilities            │
+│ - Tools: AI/agent executable capabilities   │
+│ - Commands: User-facing executable pipelines│
 │ - Agents: Specialized intelligence          │
 │ - Templates: Structured documents           │
 │ - Hooks: Event-driven automation            │
@@ -94,68 +94,17 @@ The best way to discover what's actually needed is to ship fast and learn.
 - UI: Plain HTML forms (defer to React when interactivity needed)
 ```
 
-### Constitutions
-**Purpose**: Immutable governance rules that apply across entire project.
-
-**Format**: Numbered articles with clear violation criteria.
-
-**Structure**:
-```markdown
-# Constitution: {Name}
-
-## Preamble
-Why this constitution exists.
-
-## Article I: {Rule Name}
-**Rule**: Clear statement
-**Rationale**: Why this rule
-**Validation**: How to check compliance
-**Exceptions**: When allowed (if ever)
-**Penalty**: What happens on violation
-
-## Article II: ...
-```
-
-**Example: `article-test-first.md`**
-```markdown
-# Constitution: Test-First Development
-
-## Preamble
-Tests written after implementation are biased by the implementation.
-Test-first ensures we think about contracts before coding.
-
-## Article I: Test-First Mandatory
-**Rule**: All functionality must have failing tests before implementation.
-
-**Rationale**:
-- Forces API thinking before coding
-- Prevents untestable designs
-- Provides regression protection from day 1
-
-**Validation**:
-- Commit history shows test file before implementation
-- Pre-commit hook verifies test existence
-- No implementation PR accepted without tests
-
-**Exceptions**:
-- Exploratory spikes (must be deleted or retroactively tested)
-- Generated code (tests apply to generator)
-
-**Penalty**:
-- CI fails
-- PR blocked
-- Implementation must be revised
-```
-
 ## Layer 2: Elements
 
 ### Tools
-**Purpose**: Executable capabilities that perform specific tasks.
+**Purpose**: Executable capabilities for AI/agent use. Tools are invoked by agents during their reasoning and execution, not directly by users.
+
+**Key Distinction**: Tools are for AI/agent use; Commands (see below) are for user invocation.
 
 **Types**:
-- **Commands**: User-invoked operations (e.g., `/commit`, `/scaffold`)
-- **Scripts**: Automation scripts (e.g., `pre-commit`, `deploy`)
-- **Utilities**: Helper functions (e.g., `parse-yaml`, `validate-markdown`)
+- **Analysis**: Code review, test analysis, security scanning
+- **Automation**: Pre-commit checks, deploy scripts, validation
+- **Utilities**: Parse YAML, validate markdown, query memory
 
 **Declaration** (`tool.yaml`):
 ```yaml
@@ -222,6 +171,122 @@ class QuickScaffold(Tool):
             "directory_path": f"./{name}",
             "files_created": files
         }
+```
+
+### Commands
+**Purpose**: User-facing executable pipelines that carry out complex workflows based on the current profile.
+
+**Key Distinction**: Commands are for users to invoke (e.g., `/ultrathink-task`); Tools are for AI/agents to use internally.
+
+**Characteristics**:
+- User-invoked via slash commands or CLI
+- Execute multi-step pipelines
+- Compose agents, tools, and templates
+- Respect active profile configuration
+
+**Declaration** (`command.yaml`):
+```yaml
+command:
+  name: ultrathink-task
+  type: pipeline
+  version: 1.0.0
+
+dependencies:
+  principles:
+    - analysis-first
+    - ruthless-minimalism
+  agents:
+    - zen-architect
+    - modular-builder
+  tools:
+    - create-plan
+    - review-changes
+  templates:
+    - plan-template
+
+interface:
+  inputs:
+    - task_description: string
+    - complexity: string (simple|moderate|complex)
+
+  outputs:
+    - plan_path: string
+    - implementation_status: string
+    - review_results: object
+
+pipeline:
+  steps:
+    - name: analyze
+      agent: zen-architect
+      inputs:
+        problem: "{{inputs.task_description}}"
+      outputs: architectural_direction
+
+    - name: plan
+      tool: create-plan
+      inputs:
+        direction: "{{steps.analyze.architectural_direction}}"
+        template: plan-template
+      outputs: plan_path
+
+    - name: implement
+      agent: modular-builder
+      inputs:
+        plan: "{{steps.plan.plan_path}}"
+        complexity: "{{inputs.complexity}}"
+      outputs: implementation_status
+
+    - name: review
+      tool: review-changes
+      inputs:
+        changes: "{{steps.implement.output}}"
+      outputs: review_results
+
+metadata:
+  description: "Deep analysis → planning → implementation → review pipeline"
+  usage: "/ultrathink-task \"Add user authentication\" --complexity moderate"
+  author: core
+  tags: [workflow, pipeline, comprehensive]
+```
+
+**Implementation** (`commands/ultrathink-task/pipeline.py`):
+```python
+"""Ultrathink task pipeline."""
+from forge.core import Command, Context, Pipeline
+
+class UltrathinkTask(Command):
+    """Execute comprehensive task pipeline."""
+
+    async def execute(self, ctx: Context, task_description: str, complexity: str = "moderate"):
+        """Execute the ultrathink pipeline."""
+        # Create pipeline from declaration
+        pipeline = Pipeline.from_yaml(ctx, "commands/ultrathink-task/command.yaml")
+
+        # Execute with current profile's active elements
+        result = await pipeline.run(
+            inputs={
+                "task_description": task_description,
+                "complexity": complexity
+            }
+        )
+
+        # Return aggregated results
+        return {
+            "plan_path": result.steps["plan"].outputs["plan_path"],
+            "implementation_status": result.steps["implement"].outputs["implementation_status"],
+            "review_results": result.steps["review"].outputs["review_results"]
+        }
+```
+
+**Usage**:
+```bash
+# Via CLI
+forge command ultrathink-task "Add user authentication" --complexity moderate
+
+# Via Claude Code slash command (after compilation)
+/ultrathink-task "Add user authentication"
+
+# Pipeline automatically uses agents/tools from active profile
 ```
 
 ### Agents

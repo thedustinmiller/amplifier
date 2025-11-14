@@ -1,0 +1,95 @@
+metadata:
+  name: ultrathink-task
+  type: command
+  version: 1.0.0
+  description: Comprehensive analyze → plan → implement → review pipeline
+  author: amplifier
+  tags:
+  - workflow
+  - pipeline
+  - comprehensive
+  - orchestration
+  license: MIT
+
+dependencies:
+  principles:
+  - analysis-first
+  - ruthless-minimalism
+  - respect-user-time
+  constitutions: []
+  tools:
+  - create-plan
+  - review-changes
+  agents:
+  - zen-architect
+  - modular-builder
+  templates:
+  - plan-template
+  suggests:
+  - bug-hunter
+  - post-task-cleanup
+
+conflicts:
+  principles: []
+  tools: []
+  agents: []
+  reason: null
+
+interface:
+  inputs:
+    task_description: Task description from user
+    complexity: Task complexity level (simple|moderate|complex)
+  outputs:
+    plan_path: Path to generated plan
+    implementation_status: Implementation completion status
+    review_results: Review and validation results
+  role: null
+  events: []
+
+pipeline:
+  steps:
+  - name: analyze
+    description: Analyze problem and design architecture
+    agent: zen-architect
+    inputs:
+      problem: '{{inputs.task_description}}'
+    outputs: architectural_direction
+
+  - name: plan
+    description: Create implementation plan
+    tool: create-plan
+    inputs:
+      direction: '{{steps.analyze.architectural_direction}}'
+      template: plan-template
+    outputs: plan_path
+
+  - name: implement
+    description: Build solution following plan
+    agent: modular-builder
+    inputs:
+      plan: '{{steps.plan.plan_path}}'
+      complexity: '{{inputs.complexity}}'
+    outputs: implementation_status
+
+  - name: review
+    description: Review changes and validate quality
+    tool: review-changes
+    inputs:
+      changes: '{{steps.implement.output}}'
+    outputs: review_results
+
+implementation:
+  instructions_file: ultrathink-task.md
+  allowed_tools:
+  - Bash
+  - Read
+  - Write
+  - Edit
+  - TodoWrite
+  - Task
+
+settings:
+  category: orchestration
+  execution_mode: sequential
+  allow_parallel_agents: true
+  max_iterations: 3

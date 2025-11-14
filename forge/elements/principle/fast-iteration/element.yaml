@@ -1,0 +1,36 @@
+element:
+  name: fast-iteration
+  type: principle
+  version: 1.0.0
+  description: Ship quickly, learn from real feedback, iterate rapidly
+
+dependencies:
+  principles: []
+
+suggests:
+  principles:
+    - ruthless-minimalism
+    - emergent-design
+
+conflicts:
+  principles:
+    - deep-analysis
+    # May also conflict with constitution-backed-design when it exists
+
+interface:
+  provides:
+    - rapid_prototyping
+    - quick_feedback_loops
+    - iteration_speed
+
+metadata:
+  author: core
+  tags:
+    - speed
+    - iteration
+    - feedback
+    - agile
+  license: MIT
+  updated: 2025-11-14
+
+content: fast-iteration.md

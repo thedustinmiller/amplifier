@@ -1,0 +1,34 @@
+element:
+  name: code-as-documentation
+  type: principle
+  version: 1.0.0
+  description: Write self-documenting code; the code itself is the most reliable documentation
+
+dependencies:
+  principles: []
+
+suggests:
+  principles:
+    - ruthless-minimalism
+
+conflicts:
+  principles:
+    - comprehensive-documentation
+
+interface:
+  provides:
+    - code_clarity_guidelines
+    - refactoring_mindset
+    - self_documentation_patterns
+
+metadata:
+  author: core
+  tags:
+    - code-quality
+    - readability
+    - self-documenting
+    - refactoring
+  license: MIT
+  updated: 2025-11-14
+
+content: code-as-documentation.md

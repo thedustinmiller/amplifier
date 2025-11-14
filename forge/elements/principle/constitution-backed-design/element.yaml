@@ -1,0 +1,39 @@
+element:
+  name: constitution-backed-design
+  type: principle
+  version: 1.0.0
+  description: Design and development governed by immutable, numbered rules like constitutional articles
+
+dependencies:
+  principles: []
+
+suggests:
+  principles:
+    - spec-driven
+    - ruthless-minimalism
+
+conflicts:
+  principles:
+    - emergent-design
+    - coevolution
+  reason: Constitution-backed design requires upfront immutable rules, while emergent-design and coevolution embrace evolving requirements
+
+interface:
+  provides:
+    - immutable_rule_framework
+    - violation_detection
+    - governance_structure
+    - constraint_clarity
+
+metadata:
+  author: core
+  tags:
+    - governance
+    - constraints
+    - immutability
+    - clarity
+    - rules
+  license: MIT
+  updated: 2025-11-14
+
+content: constitution-backed-design.md

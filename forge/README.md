@@ -1,6 +1,13 @@
 # Forge: A Composable AI Development System
 
-**Forge** is a greenfield AI development system that learns from both Amplifier and Spec-Kit while embracing a fundamental truth: **specifications and code coevolve**. Neither is purely authoritative—requirements crystallize through the act of implementation.
+**Forge** is a **preprocessor/compiler for AI agent profiles**. It compiles specified elements into usable configurations that launch agents and subagents with tailored behaviors.
+
+Think of Forge as:
+- **Input**: Element specifications (principles, tools, commands, agents, templates)
+- **Process**: Composition and compilation into platform-specific profiles
+- **Output**: Agent configurations ready for execution (e.g., Claude Code `.claude/` directories)
+
+Forge learns from both Amplifier and Spec-Kit while embracing a fundamental truth: **specifications and code coevolve**. Neither is purely authoritative—requirements crystallize through the act of implementation.
 
 ## Core Philosophy
 
@@ -39,24 +46,35 @@ Memory, agents, tools, templates—all pluggable. Start simple, scale to product
 
 ## Architecture
 
+### Compilation Model
+
+Forge operates as a **preprocessor/compiler**:
+1. **Load** element specifications from library
+2. **Compose** elements according to user selection
+3. **Resolve** dependencies and detect conflicts
+4. **Compile** into platform-specific artifacts
+5. **Deploy** as agent profiles ready for execution
+
 ### Element Hierarchy
 
 #### Layer 1: Foundations
-**Principles, Constitutions, Philosophical Stances**
+**Principles - Philosophical Stances**
 - Define "why" and high-level constraints
+- Constrain decision-making without prescribing implementation
 - Examples:
   - `ruthless-minimalism.md` - Ship fast, adapt
-  - `formal-verification.md` - Prove correctness
+  - `constitution-backed-design.md` - Governance through immutable rules
   - `specification-driven.md` - Specs as source of truth
   - `coevolution.md` - Specs and code dialogue
 
 #### Layer 2: Elements
 **Atomic, Reusable Building Blocks**
-- **Principles**: Philosophical guidelines
-- **Tools**: Executable capabilities (commands, scripts)
-- **Agents**: Specialized intelligence
-- **Templates**: Structured documents
-- **Hooks**: Event-driven automation
+- **Principles**: Philosophical guidelines that constrain decisions
+- **Tools**: Executable capabilities for AI/agent use
+- **Commands**: User-facing executable pipelines (e.g., slash commands)
+- **Agents**: Specialized AI intelligences
+- **Templates**: Structured documents and formats
+- **Hooks**: Event-driven automation triggers
 - **Queries**: Memory interaction patterns
 
 Each element:
@@ -154,6 +172,10 @@ elements:
     - live-reload
     - commit
 
+  commands:
+    - ultrathink-task
+    - rapid-iterate
+
   agents:
     - zen-architect
     - bug-hunter
@@ -224,11 +246,12 @@ Decompose amplifier defaults:
 - [ ] Agents: zen-architect, bug-hunter
 - [ ] Templates: minimal-spec, quick-plan
 
-### Phase 3: Claude Code Integration
-- [ ] `.claude/` integration
-- [ ] Commands as tools
-- [ ] Agents via subagents
-- [ ] Hooks implementation
+### Phase 3: Claude Code Integration (Compilation Target)
+- [ ] Compile compositions to `.claude/` directories
+- [ ] Generate slash commands from command elements
+- [ ] Generate agent prompts from agent elements
+- [ ] Generate tool scripts for AI/agent use
+- [ ] Implement hooks as event triggers
 
 ### Phase 4: Meta System
 - [ ] Composer for interactive assembly

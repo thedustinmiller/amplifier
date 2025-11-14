@@ -1,0 +1,36 @@
+element:
+  name: deep-analysis
+  type: principle
+  version: 1.0.0
+  description: Understand deeply before building to prevent costly mistakes
+
+dependencies:
+  principles: []
+
+suggests:
+  principles:
+    - spec-driven
+    # May also suggest constitution-backed-design when it exists
+
+conflicts:
+  principles:
+    - fast-iteration
+    - ruthless-minimalism
+
+interface:
+  provides:
+    - thorough_investigation
+    - risk_assessment
+    - comprehensive_planning
+
+metadata:
+  author: core
+  tags:
+    - analysis
+    - planning
+    - thoroughness
+    - risk-mitigation
+  license: MIT
+  updated: 2025-11-14
+
+content: deep-analysis.md

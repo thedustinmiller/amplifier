@@ -395,6 +395,7 @@ async def wizard_add():
         ("tools", "Executable capabilities"),
         ("agents", "Specialized AI intelligence"),
         ("templates", "Document templates"),
+        ("commands", "Slash commands for Claude Code"),
     ]
 
     element_type = get_multiselect("Select element type:", options, max_selections=1)
@@ -411,6 +412,7 @@ async def wizard_add():
         "tools": ElementType.TOOL,
         "agents": ElementType.AGENT,
         "templates": ElementType.TEMPLATE,
+        "commands": ElementType.COMMAND,
     }
 
     available = element_loader.list_elements(type_map[element_type])

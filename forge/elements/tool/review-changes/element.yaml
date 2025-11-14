@@ -31,6 +31,23 @@ interface:
 implementation:
   instructions: '# Review and test code changes
 
+    ## Purpose: For AI/Agent Use
+
+    This is a **tool** element designed for AI/agent invocation during autonomous
+    reasoning and execution. It is not intended for direct user invocation.
+
+    **Key distinction:**
+
+    - **Tools** (this element): Invoked by AI agents internally during their reasoning
+    process
+
+    - **Commands**: User-facing slash commands or CLI commands for direct invocation
+
+    If you''re a user looking to interact with this functionality, there may be a
+    corresponding command element available. Tools are building blocks that agents
+    use to accomplish tasks.
+
+    ---
 
     Everything below assumes you are in the repo root directory, change there if needed
     before running.
